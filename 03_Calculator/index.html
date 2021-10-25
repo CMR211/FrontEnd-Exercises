@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <title>Calculator</title>
+    </head>
+    <body>
+        <div class="main-container">
+            <footer>
+                <h1>Calc App</h1>
+            </footer>
+            <div class="input-box">
+                <!-- <span class="material-icons-outlined" style="font-size: 1.5">
+                    calculate
+                </span> -->
+                <p class="calc-input" id="saved-value">123.92</p>
+                <p class="calc-input" id="input">512.01</p>
+            </div>
+            <div class="buttons-container">
+                <!-- first row -->
+                <button class="btn btn-special" id="btn-factorial">n!</button>
+                <button class="btn btn-special" id="btn-c">C</button>
+                <button class="btn btn-special" id="btn-ce">CE</button>
+                <button class="btn btn-special" id="btn-delete"><span class="material-icons-outlined">backspace</span></button>
+                <!-- second row -->
+                <button class="btn btn-special" id="btn-reciprocal">1/X</button>
+                <button class="btn btn-special" id="btn-square">X<span style="font-size: 150%">&sup2;</span></button>
+                <button class="btn btn-special sign" id="btn-sqrt">&radic;</button>
+                <button class="btn btn-special sign" id="btn-divide">&divide;</button>
+                <!-- third row -->
+                <button class="btn btn-number">7</button>
+                <button class="btn btn-number">8</button>
+                <button class="btn btn-number">9</button>
+                <button class="btn btn-special sign" id="btn-multiply">&times;</button>
+                <!-- fourth row -->
+                <button class="btn btn-number">4</button>
+                <button class="btn btn-number">5</button>
+                <button class="btn btn-number">6</button>
+                <button class="btn btn-special sign" id="btn-subtract">&minus;</button>
+                <!-- fifth row -->
+                <button class="btn btn-number">1</button>
+                <button class="btn btn-number">2</button>
+                <button class="btn btn-number">3</button>
+                <button class="btn btn-special sign" id="btn-add">&plus;</button>
+                <!-- sixth row -->
+                <button class="btn btn-special sign" id="btn-negative">&plusmn;</button>
+                <button class="btn btn-number">0</button>
+                <button class="btn btn-special" id="btn-decimal">.</button>
+                <button class="btn btn-analog sign" id="btn-equal">&equals;</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

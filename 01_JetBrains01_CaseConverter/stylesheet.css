@@ -1,0 +1,60 @@
+:root {
+    --colormint: #DDFFE7;
+    --colorspearmint: #98D7C2;
+    --colortealgreen: #167D7F;
+    --colorteal: #29A0B1;
+}
+
+body {
+    font-family: "Arial Narrow", Helvetica, sans-serif;
+}
+.main-container {
+    display: flex;
+    flex-flow: column wrap;
+
+    height: 60vh;
+    width: 600px;
+
+    margin: auto;
+    margin-top: 1em;
+
+    border-style: solid;
+    border-color: var(--colorspearmint);
+    border-radius: 4px;
+
+    padding: 1em;
+}
+
+.title-container {
+    color: var(--colortealgreen);
+    font-size: 2em;
+}
+
+.buttons-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    margin: 1em 0 1em 0;
+}
+
+button {
+    padding: 0.5em;
+
+    background-color: var(--colormint);
+    color: var(--colortealgreen);
+
+    border-radius: 4px;
+    border-color: var(--colorspearmint);
+    border-style: solid;
+
+    font-weight: bold;
+}
+
+button:hover {
+    border-color: var(--colortealgreen);
+}
+
+button:active {
+    background-color: var(--colorteal);
+}

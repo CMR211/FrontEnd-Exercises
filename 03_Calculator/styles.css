@@ -1,0 +1,126 @@
+:root {
+    --primary: #ffe1e0;
+    /* --primary: #F94E48; */
+    --secondary: #f9489b;
+    --analog: #ffb7a1;
+    --text: #424242;
+    --box-shadow: 0 3px 6px rgba(75, 74, 74, 0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.material-icons-outlined {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1.5;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    margin: 0;
+    padding: 1em;
+}
+
+.main-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    border: var(--blue) solid 1px;
+    border-radius: 1em;
+    height: calc(620px - 2em);
+    width: calc(460px - 2em);
+    margin: auto;
+    box-shadow: var(--box-shadow);
+    padding: 1em;
+}
+
+footer {
+    width: auto;
+    padding: 1em;
+    text-align: center;
+    background-color: var(--primary);
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5em;
+}
+
+.input-box {
+    /* display: flex;
+    justify-content: space-between; */
+    width: auto;
+    padding: 0.65em 1em;
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5em;
+    font-size: 1.5em;
+}
+
+.calc-input {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    font-weight: bold;
+}
+
+#saved-value {
+    font-size: 75%;
+    opacity: 75%;
+}
+
+.buttons-container {
+    height: 60%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:  1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        "btn btn btn btn"
+        "btn btn btn btn" 
+        "btn btn btn btn" 
+        "btn btn btn btn" 
+        "btn btn btn btn" 
+        "btn btn btn btn" ;
+    gap: 0.5em;
+    align-items: stretch;
+}
+
+.btn {
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: var(--box-shadow);
+    border: 0;
+    border-radius: 0.5em;
+    background-color: #fff;
+}
+
+.btn:hover {
+    transition: background-color 200ms ease-in-out;
+    background-color: #f9489b;
+}
+
+.btn-special {
+    background-color: var(--primary);
+}
+
+.btn-analog {
+    background-color: var(--analog);
+}
+
+.sign {
+    font-size: 1.5em;
+}
