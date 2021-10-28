@@ -1,19 +1,14 @@
-class ButtonAdd extends React.Component {
-    render () {
-        return (
-            <button 
-                className="button-add">+</button>
-        )
-    }
-}
-
-
-
-
 class App extends React.Component {
     render () {
         return (
-            <ButtonAdd>Click me</ButtonAdd>
+            <React.Fragment>
+                <div className="project-info">
+                    <h1>Nazwa zadania</h1>
+                    <ButtonSmall type="add"/><br />
+                    <ChangeableText />
+                    <Input placeholder="Write sth."/>
+                </div>
+            </React.Fragment>
         )
     }
 }

@@ -9,14 +9,37 @@
     <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 
+    <link rel="stylesheet" href="colors.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="ButtonAdd.css">
   </head>
-
+  
   <body>
     <div id="react-app"></div>
+    
+      <!-- 
+    Loading React Components from standalone files (jsx and css).
+    This is just a workaround since I am too lazy to install proper
+    create-react-app every time I start a small project to learn.
+    However when loading React and Babel in-browser it fails with Components
+    (lacking nodeJS require()). So, here I am loading separate components individually.  
+      -->
 
-    <script type="text/babel" src="App.js"></script>
+    <!-- ButtonAdd -->
+    <link rel="stylesheet" href="./Components/ButtonSmall/ButtonSmall.css">
+    <script type="text/babel" src="./Components/ButtonSmall/ButtonSmall.js"></script>
+
+    <!-- Input  -->
+    <link rel="stylesheet" href="./Components/Input/Input.css">
+    <script type="text/babel" src="./Components/Input/Input.js"></script>
+
+    <!-- ChangeableText -->
+    <!-- <link rel="stylesheet" href="./Components/ChangeableText/ChangeableText.css"> -->
+    <script type="text/babel" src="./Components/ChangeableText/ChangeableText.js"></script>
+    
+    <!-- Finally we are ready to load the main react app -->
+
+    <!-- Main React App -->
+    <script defer type="text/babel" src="App.js"></script>
 
   </body>
 </html>
