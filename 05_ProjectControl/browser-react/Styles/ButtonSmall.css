@@ -1,4 +1,4 @@
-.button-add {
+.button-small {
     width: 4em;
     height: 4em;
     background-color: var(--color-test);
@@ -8,7 +8,7 @@
     margin: 1px;
 }
 
-.button-add:hover {
+.button-small:hover {
     border: 3px solid black;
     background-color: var(--color-test2);
 }
