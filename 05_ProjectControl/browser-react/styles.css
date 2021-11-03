@@ -1,3 +1,61 @@
-:root {
+* {
     font-family: 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#react-app {
+    margin: 0;
+    padding: 1em;
+    border: none;
+    width: calc(100vw - 2em);
+    height: auto;
+    min-height: calc(100vh - 2em);
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 3fr 5fr 2fr;
+    grid-template-rows: 1fr 7fr 1fr;
+    grid-template-areas: 
+        "info info info"
+        "fazy uzgodnienia zgloszenie"
+        "footer footer footer";
+    gap: 1em;
+}
+
+.second-container {
+    background-color: yellow;
+    padding: 0.5em;
+}
+
+.third-container {
+    flex-grow: 1;
+}
+
+#header {
+    grid-area: info;
+}
+
+#phase1 {
+    grid-area: fazy;
+    display: flex;
+    flex-flow: column;
+}
+
+#phase2 {
+    grid-area: uzgodnienia;
+}
+
+#phase3 {
+    grid-area: zgloszenie;
+}
+
+#footer {
+    grid-area: footer;
+}
+
+h1 {
+    font-size: 1em;
 }

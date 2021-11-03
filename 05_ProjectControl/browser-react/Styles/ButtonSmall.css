@@ -1,6 +1,6 @@
 .button-small {
-    width: 4em;
-    height: 4em;
+    width: 2em;
+    height: 2em;
     background-color: var(--color-test);
     font-family: inherit;
     border: none;
@@ -9,6 +9,10 @@
 }
 
 .button-small:hover {
-    border: 3px solid black;
     background-color: var(--color-test2);
+}
+
+.button-small>img {
+    width: 1.45em;
+    height: 1.45em;
 }

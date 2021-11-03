@@ -61,24 +61,65 @@ function ChangeableText (props) {
 }
 
 function ButtonSmall (props) {
-    return (
+    
+    const [isHover, setHover] = React.useState();
+
+    const handleMouseEnter = () => {
+        setHover(true);
+    }
+    const handleMouseLeave = () => {
+        setHover(false);
+    }
+
+    const Button = () => { 
         <button 
-        onClick={props.onClick}
-        className="button-small">
-            <img 
-            src={"./Icons/icon_" + props.type + ".svg"} />
+            onClick={props.onClick}
+            className="button-small"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
+                <img 
+                    src={"./Icons/icon_" + props.type + ".svg"} />
         </button>
-    )
+    }
+
+    if (isHover) {
+        return (
+            <div>
+                <Button />
+                <p>Rename</p>
+            </div>
+        )
+    } else {
+        return <Button />
+    }
 }
 
 function App () {
     return (
-        <React.Fragment>
-            <div className="project-info">
-                <ChangeableText id="nazwaZadania" />
-                <ChangeableText id="inwestor" />
+            <div className="main-container">
+                <div className="second-container" id="header">
+                    <h1>Informacje podstawowe</h1>
+                    <ChangeableText id="nazwaZadania" />
+                    <ChangeableText id="inwestor" />
+                    </div>
+                <div className="second-container" id="phase1">
+                    <div className="third-container" id="informacje-do-projektowania">
+                        <h1>Informacje do projektowania</h1>
+                    </div>
+                    <div className="third-container" id="zaawansowanie-projektu">
+                        <h1>Zaawansowanie projektu</h1>
+                    </div>
+                </div>
+                <div className="second-container" id="phase2">
+                    DIV Z UGODNIENIAMI
+                </div>
+                <div className="second-container" id="phase3">
+                    DIV ZE ZGŁOSZENIEM
+                </div>
+                <div className="second-container" id="footer">
+                    DIV FOOTER
+                </div>
             </div>
-        </React.Fragment>
     )
 }
 
