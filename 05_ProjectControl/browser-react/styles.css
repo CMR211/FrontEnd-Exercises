@@ -5,9 +5,9 @@
     border: none;
 }
 
-/* body {
-    overflow: hidden;
-} */
+body {
+    background-color: var(--color-darkBackground);
+}
 
 #react-app {
     margin: 0;
@@ -23,14 +23,23 @@
     grid-template-columns: 3fr 5fr 2fr;
     grid-template-rows: auto;
     grid-template-areas: 
-        "info info info"
-        "fazy uzgodnienia zgloszenie"
-        "footer footer footer";
+        "top top top"
+        "left-up middle right"
+        "left-middle middle right"
+        "left-down middle right"
+        "left-down middle bottom";
     gap: 1em;
 }
 
+.paper {
+    background-color: var(--color-lightBackground);
+    border-radius: 6px;
+    box-shadow: 0 2px 2px rgb(204 197 185 / 70%);
+    padding: 0.5em;
+}
+
 .second-container {
-    border: solid 2px red;
+    /* border: solid 2px red; */
     padding: 0.5em;
 }
 
@@ -43,8 +52,8 @@
     margin: 0.5em 0 0 0;
 }
 
-#header {
-    grid-area: info;
+#container-top {
+    grid-area: top;
 }
 
 #header-sub-container {
@@ -53,26 +62,34 @@
     justify-content: space-around;
 }
 
-#phase1 {
-    grid-area: fazy;
-    display: flex;
-    flex-flow: column;
+#container-left-up {
+    grid-area: left-up;
 }
 
-#phase2 {
-    grid-area: uzgodnienia;
+#container-left-down {
+    grid-area: left-down;
 }
 
-#phase3 {
-    grid-area: zgloszenie;
+#container-left-middle {
+    grid-area: left-middle;
 }
 
-#footer {
-    grid-area: footer;
+#container-middle {
+    grid-area: middle;
+}
+
+#container-right {
+    grid-area: right;
+}
+
+#container-bottom {
+    grid-area: bottom;
 }
 
 h1 {
     font-size: 1em;
+    margin: 2px 0 10px 0;
+    color: var(--color-dark);
 }
 
 h2 {

@@ -1,5 +1,5 @@
 const project = new Object();
-
+project.mpzp = "KDW 2.01";
 
 function ChangeableText (props) {
 
@@ -16,7 +16,7 @@ function ChangeableText (props) {
 
     const inputSize = {
         display: "block", 
-        fontSize: "1.5em",
+        fontSize: "1em",
         fontFamily: "inherit",
         flexGrow: "1",
         padding: "0",
@@ -90,11 +90,96 @@ function ButtonSmall (props) {
     )
 }
 
+function LabeledContainer (props) {
+    return(
+        <div id={props.id} className={props.className}>
+            <h1>{props.title}</h1>
+            {props.children}
+        </div>
+    )
+}
+
+function EditableText (props) {
+
+    const [value, setValue] = React.useState(project[props.data]);
+    const [opacity, setOpacity] = React.useState("20%");
+    const [mouseStyle, setMouseStyle] = React.useState("default");
+
+    const divStyle = {
+        display: "flex",
+        width: "100%",
+    }
+
+    const buttonStyle = {
+        opacity: opacity,
+        margin: "0 0 0 0.5em",
+        cursor: mouseStyle,
+    }
+
+    const handleEdit = () => {
+        project[props.data] = prompt(props.prompt) || project[props.data];
+        setValue(project[props.data]);
+    }
+
+    const handleMouseEnter = () => {
+        setOpacity("100%");
+        setMouseStyle("pointer");
+    }
+
+    const handleMouseLeave = () => {
+        setOpacity("20%");
+        setMouseStyle("default");
+    }
+
+    return (
+        <div style={divStyle}>
+            <p>{props.label}: {value}</p>
+            <button 
+                style={buttonStyle} 
+                onClick={handleEdit} 
+                onMouseEnter={handleMouseEnter} 
+                onMouseLeave={handleMouseLeave}>
+                (edytuj)
+            </button>
+        </div>
+    )
+}
+
+function EditableLink (props) {
+
+    const [mouseStyle, setMouseStyle] = React.useState("default");
+
+    const handleMouseEnter = () => {
+        setMouseStyle("pointer");
+    }
+
+    const handleMouseLeave = () => {
+        setMouseStyle("default");
+    }
+
+    const style = {
+        cursor: mouseStyle,
+        width: "3em"
+    }
+
+    return (
+        <a href="https://www.youtube.com" target="_blank">
+            <img 
+                src="./Icons/youtube.svg" 
+                alt="youtube" 
+                style={style}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            />
+        </a>
+    )
+}
+
+
 function App () {
     return (
             <div className="main-container">
-                <div className="second-container" id="header">
-                    <h1>Informacje podstawowe</h1>
+                <LabeledContainer id="container-top" className="paper" title="Informacje podstawowe">
                     <div className="third-container" id="header-sub-container">
                         <div className="fourth-container">
                             <h2>Inwestor/zamawiający</h2>
@@ -108,25 +193,53 @@ function App () {
                             <h2>Działki</h2>
                         </div>
                     </div>
-                </div>
-                <div className="second-container" id="phase1">
-                    <h1>Informacje do projektowania</h1>
-                    <div className="third-container" id="informacje-do-projektowania">
-                    </div>
-                    <h1>Zaawansowanie projektu</h1>
-                    <div className="third-container" id="zaawansowanie-projektu">
+                </LabeledContainer>
 
-                    </div>
-                </div>
-                <div className="second-container" id="phase2">
-                    DIV Z UGODNIENIAMI
-                </div>
-                <div className="second-container" id="phase3">
-                    DIV ZE ZGŁOSZENIEM
-                </div>
-                <div className="second-container" id="footer">
-                    DIV FOOTER
-                </div>
+                <LabeledContainer id="container-left-up" className="paper" title="Informacje do projektowania">
+                    <EditableText 
+                        label="Link do YT" 
+                        data="youtube"
+                        prompt="Podaj link do filmu na youtube.com:"
+                    />
+                    <EditableText 
+                        label="MPZP" 
+                        data="mpzp"
+                        prompt="Podaj zagospodarowanie przestrzenne dla tej drogi:"
+                    />
+                    <EditableText 
+                        label="Publiczna" 
+                        data="czyPubliczna"
+                        prompt="Czy droga jest drogą publiczną? (tak/nie) Jeśli tak możesz podać jej nadany numer."
+                    />
+                    <EditableText 
+                        label="Szerokość jezdni" 
+                        data="szerokoscJezdni"
+                        prompt="Podaj wymaganą przez zamawiającego szerokość jezdni."
+                    />
+                
+                </LabeledContainer>
+
+                <LabeledContainer id="container-left-middle" className="paper" title="Linki">
+                    <EditableLink />
+                </LabeledContainer>
+
+                <LabeledContainer id="container-left-down" className="paper" title="Progres w rysunkach">
+                    <input type="checkbox" name="mpzp"/>
+                    <label for="mpzp">Mapa poglądowa</label>
+                </LabeledContainer>
+
+                <LabeledContainer id="container-middle" className="paper" title="Uzgodnienia">
+
+                </LabeledContainer>
+
+                <LabeledContainer id="container-right" className="paper" title="Zgłoszenie">
+
+                </LabeledContainer>
+
+                <LabeledContainer id="container-bottom" className="paper" title="Nawigacja">
+
+                </LabeledContainer>
+
             </div>
     )
 }
