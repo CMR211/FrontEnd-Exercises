@@ -6,13 +6,16 @@
     border: none;
     border-radius: 50%;
     margin: 1px;
+    /* transition: all 200ms ease-in-out; */
 }
 
 .button-small:hover {
     background-color: var(--color-test2);
+    width: 7em;
+    border-radius: 1em;
 }
 
-.button-small>img {
+.button-small>div>img {
     width: 1.45em;
     height: 1.45em;
 }

@@ -1,23 +1,27 @@
 * {
-    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-family: Lato, Arial, sans-serif;
     margin: 0;
     padding: 0;
     border: none;
 }
+
+/* body {
+    overflow: hidden;
+} */
 
 #react-app {
     margin: 0;
     padding: 1em;
     border: none;
     width: calc(100vw - 2em);
-    height: auto;
-    min-height: calc(100vh - 2em);
+    height: 90vh;
+    min-height: calc(100vh - 10em);
 }
 
 .main-container {
     display: grid;
     grid-template-columns: 3fr 5fr 2fr;
-    grid-template-rows: 1fr 7fr 1fr;
+    grid-template-rows: auto;
     grid-template-areas: 
         "info info info"
         "fazy uzgodnienia zgloszenie"
@@ -26,16 +30,27 @@
 }
 
 .second-container {
-    background-color: yellow;
+    border: solid 2px red;
     padding: 0.5em;
 }
 
 .third-container {
     flex-grow: 1;
+    border: solid 2px blue;
+}
+
+.third-container+h1 {
+    margin: 0.5em 0 0 0;
 }
 
 #header {
     grid-area: info;
+}
+
+#header-sub-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 #phase1 {
@@ -58,4 +73,9 @@
 
 h1 {
     font-size: 1em;
+}
+
+h2 {
+    font-size: 1em;
+    font-weight: normal;
 }

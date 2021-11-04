@@ -15,7 +15,7 @@ function ChangeableText (props) {
     }
 
     const inputSize = {
-        display: "inline", 
+        display: "block", 
         fontSize: "1.5em",
         fontFamily: "inherit",
         flexGrow: "1",
@@ -71,27 +71,23 @@ function ButtonSmall (props) {
         setHover(false);
     }
 
-    const Button = () => { 
-        <button 
+    let hoverText;
+    isHover ? hoverText = `${props.type.toUpperCase()}` : "";
+
+    return (
+        <div>
+            <button 
             onClick={props.onClick}
             className="button-small"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
-                <img 
-                    src={"./Icons/icon_" + props.type + ".svg"} />
-        </button>
-    }
-
-    if (isHover) {
-        return (
-            <div>
-                <Button />
-                <p>Rename</p>
-            </div>
-        )
-    } else {
-        return <Button />
-    }
+                <div style={{display:"flex", alignItems: "center", justifyContent:"center"}}>
+                    <img src={"./Icons/icon_" + props.type + ".svg"} />
+                    <span>{hoverText}</span>
+                </div>
+            </button>
+        </div>
+    )
 }
 
 function App () {
@@ -99,15 +95,27 @@ function App () {
             <div className="main-container">
                 <div className="second-container" id="header">
                     <h1>Informacje podstawowe</h1>
-                    <ChangeableText id="nazwaZadania" />
-                    <ChangeableText id="inwestor" />
+                    <div className="third-container" id="header-sub-container">
+                        <div className="fourth-container">
+                            <h2>Inwestor/zamawiający</h2>
+                            <ChangeableText id="inwestor" />    
+                        </div>
+                        <div className="fourth-container">
+                            <h2>Nazwa zadania</h2>
+                            <ChangeableText id="nazwaZadania" />
+                        </div>
+                        <div className="fourth-container">
+                            <h2>Działki</h2>
+                        </div>
                     </div>
+                </div>
                 <div className="second-container" id="phase1">
+                    <h1>Informacje do projektowania</h1>
                     <div className="third-container" id="informacje-do-projektowania">
-                        <h1>Informacje do projektowania</h1>
                     </div>
+                    <h1>Zaawansowanie projektu</h1>
                     <div className="third-container" id="zaawansowanie-projektu">
-                        <h1>Zaawansowanie projektu</h1>
+
                     </div>
                 </div>
                 <div className="second-container" id="phase2">
