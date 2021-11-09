@@ -1,14 +1,9 @@
 import React from "react";
-import {useSpring, animated} from "react-spring";
 
 function NavItem({id, className, name, activePanel, setActivePanel}) {
 
   const [isHover, setHover] = React.useState(false);
   
-  const myAnimation = useSpring({
-    boxShadow: (activePanel === name) ? "-10px 0px 0 -2px white" : "0 0px 0 -2px white"
-  });
-
   const style = {
     padding: "1em",
     margin: "1em",
@@ -18,20 +13,20 @@ function NavItem({id, className, name, activePanel, setActivePanel}) {
     border: "none",
     background: (isHover) ? ("white") : ("none"),
     cursor: (isHover) ? ("pointer") : ("default"),
-    // boxShadow: (activePanel === name) ? "-10px 0px 0 -2px white" : "none",
-    // myAnimation,
+    boxShadow: (activePanel === name) ? "-10px 0px 0 -2px white" : "none",
+    transition: "box-shadow 500ms 500ms ease, background 500ms ease, color 500ms ease",
   };
 
   return (
-    <animated.button
-      style={Object.assign(style, myAnimation)}
+    <button
+      style={style}
       className={className}
       id={id}
       onClick={() => setActivePanel(name)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       {name}
-    </animated.button>
+    </button>
   );
 }
 
