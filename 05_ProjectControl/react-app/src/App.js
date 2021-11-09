@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import LabeledContainer from "./Components/LabeledContainer";
+import ContentWrapper from "./Components/ContentWrapper";
 import NavBar from "./Components/NavBar";
 
 function App() {
@@ -9,9 +8,7 @@ function App() {
   return (
     <div>
       <NavBar activePanel={activePanel} setActivePanel={setActivePanel} />
-      <LabeledContainer title="Test" className="paper">
-        <p>Infoasd</p>
-      </LabeledContainer>
+      <ContentWrapper activePanel={activePanel}/>
     </div>
   );
 }
