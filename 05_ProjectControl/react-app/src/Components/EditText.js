@@ -17,7 +17,6 @@ function EditText({ id, className, fontSize, data, children }) {
 
   const handleCopy = () => {
     copyToClipboard(window.$projekt[data]);
-    
   };
 
   const handleDone = () => {
