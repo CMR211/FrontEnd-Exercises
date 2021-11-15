@@ -1,8 +1,6 @@
 import React from "react";
-import LabeledContainer from "./LabeledContainer";
 import NavItem from "./NavItem";
 import EditText from "./EditText";
-
 
 function NavBar({ id, className, activePanel, setActivePanel }) {
 
@@ -24,11 +22,6 @@ function NavBar({ id, className, activePanel, setActivePanel }) {
     navbarDivider: {
       backgroundColor: "white",
       minWidth: "5px",
-    },
-    titles: {
-      padding: "0 1rem",
-      color: "white",
-      textAlign: "right",
     }
   }
 
@@ -36,8 +29,8 @@ function NavBar({ id, className, activePanel, setActivePanel }) {
   return (
     <div id={id} className={className} style={styles.container}>
       <div id="navbar-left" style={styles.navbarLeft}>
-        <EditText fontSize="1rem"><h2 style={styles.titles}>{window.$projekt.inwestor}</h2></EditText>
-        <EditText fontSize="1.66rem"><h1 style={styles.titles}>{window.$projekt.nazwa}</h1></EditText>
+        <EditText fontSize="1rem" data="inwestor" />
+        <EditText fontSize="1.66rem" data="nazwa" />
       </div>
       <div id="navbar-divider" style={styles.navbarDivider}></div>
       <div

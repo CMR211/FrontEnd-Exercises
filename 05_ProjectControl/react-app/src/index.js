@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 window.$projekt = {
   nazwa: "Przebudowa drogi wojewódzkiej DW451 w miejscowości Syców polegająca na budowie chodnika wzdłuż ul. Kaliskiej",
   inwestor: "Zarząd Dróg Powiatowych w Oleśnicy",
+  kategoria: "wojewódzka, publiczna",
+  klasa: "Droga dojazdowa KDD 3.01"
 }
 
 ReactDOM.render(

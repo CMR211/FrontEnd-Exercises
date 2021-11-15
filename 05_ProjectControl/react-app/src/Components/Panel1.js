@@ -1,4 +1,6 @@
 import React from "react";
+import EditableParagraph from "./EditableParagraph";
+import ParagraphTitle from "./ParagraphTitle";
 
 const divStyle = {
   maxWidth: "40rem",
@@ -9,21 +11,13 @@ const divStyle = {
 function Panel1(props) {
   return (
     <div style={divStyle}>
-      <div
-        style={{
-          position: "absolute",
-          border: "2px solid red",
-          minWidth: "200px",
-          minHeight: "200px",
-          top: "0",
-          right: "0",
-        }}></div>
-      <h3>Informacje podstawowe</h3>
-      <p>Klasa drogi</p>
-      <p>Kategoria drogi</p>
-      <h3>Wymagania wg zamawiającego</h3>
+      <h3 className="parTitle">Informacje podstawowe</h3>
+      <EditableParagraph title="Kategoria drogi" data="kategoria" />
+      <EditableParagraph title="Klasa drogi" data="klasa" />
+      <h3 className="parTitle">Wymagania wg zamawiającego</h3>
       <p>Szerokość jezdni</p>
-      <h3>Działki</h3>
+      <h3 className="parTitle">Działki</h3>
+      <h3 className="parTitle">Linki</h3>
     </div>
   );
 }

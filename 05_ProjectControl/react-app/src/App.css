@@ -23,3 +23,20 @@ h3 {
 #navbar {
   display: flex;
 }
+
+textarea:focus {
+  /* border-bottom: 3px solid black; */
+  box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+  outline: none;
+}
+
+button:hover {
+  background: gray;
+}
+
+.parTitle {
+  /* border-bottom: 2px solid black; */
+  background: #8f8980;
+
+  padding: 0.5rem 0;  
+}

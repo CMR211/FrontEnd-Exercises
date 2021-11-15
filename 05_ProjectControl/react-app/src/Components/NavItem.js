@@ -14,7 +14,7 @@ function NavItem({id, className, name, activePanel, setActivePanel}) {
     background: (isHover) ? ("white") : ("none"),
     cursor: (isHover) ? ("pointer") : ("default"),
     boxShadow: (activePanel === name) ? "-10px 0px 0 -2px white" : "none",
-    transition: "box-shadow 500ms 500ms ease, background 500ms ease, color 500ms ease",
+    transition: "box-shadow 500ms 200ms ease, background 500ms ease, color 500ms ease",
   };
 
   return (
