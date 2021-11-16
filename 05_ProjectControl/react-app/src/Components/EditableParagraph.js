@@ -3,6 +3,7 @@ import React from "react";
 function EditableParagraph ({ title, data }) {
 
   const projekt = JSON.parse(localStorage.getItem("projekt"));
+  if (projekt[data] === undefined) projekt[data] = "";
 
   const [parData, setParData] = React.useState(projekt[data]);
   const [isHover, setHover] = React.useState(false);

@@ -7,6 +7,7 @@ import copyToClipboard from "../Functions/CopyToClipboard.js";
 function EditText({ id, className, fontSize, data, children }) {
 
   const projekt = JSON.parse(localStorage.getItem("projekt"));
+  if (projekt[data] === undefined) projekt[data] = "";
 
   const [isHover, setHover] = React.useState(false);
   const [isEditing, setEditing] = React.useState(false);

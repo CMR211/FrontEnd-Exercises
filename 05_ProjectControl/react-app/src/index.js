@@ -12,8 +12,16 @@ const projekt = {
   klasa: "Droga dojazdowa KDD 3.01",
   szerokoscJezdni: "Minimum 6,0 metra",
   konstrukcjaNawierzchni: "Jezdnia bitumiczna, konstrukcja nawierzchni KR1",
-  informacjeDodatkowe: "Jezdnia okrawężnikowana, z obustronnymi chodnikami o szerokości 2,0 metra. Konstrukcja chodników z kostki betonowej typu Holland 8 cm w kolorze szarym. Należy zastosować ściek przykraweżnikowy z kostki betonowej 16x16 cm. "
-}
+  informacjeDodatkowe: "Jezdnia okrawężnikowana, z obustronnymi chodnikami o szerokości 2,0 metra. Konstrukcja chodników z kostki betonowej typu Holland 8 cm w kolorze szarym. Należy zastosować ściek przykraweżnikowy z kostki betonowej 16x16 cm. ",
+  konserwatorOpinia: {
+    status: "notSend",
+    date: "", },
+  konserwatorDecyzja: {
+    status: "notNeeded",
+    date: "", },
+  }
+
+console.log(projekt);
 
 // Check if there is existing projekt data if not use the example above
 function setProjektData () {
