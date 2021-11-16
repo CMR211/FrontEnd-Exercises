@@ -4,12 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-window.$projekt = {
+// Example projekt data
+const projekt = {
   nazwa: "Przebudowa drogi wojewódzkiej DW451 w miejscowości Syców polegająca na budowie chodnika wzdłuż ul. Kaliskiej",
   inwestor: "Zarząd Dróg Powiatowych w Oleśnicy",
   kategoria: "wojewódzka, publiczna",
-  klasa: "Droga dojazdowa KDD 3.01"
+  klasa: "Droga dojazdowa KDD 3.01",
+  szerokoscJezdni: "Minimum 6,0 metra",
+  konstrukcjaNawierzchni: "Jezdnia bitumiczna, konstrukcja nawierzchni KR1",
+  informacjeDodatkowe: "Jezdnia okrawężnikowana, z obustronnymi chodnikami o szerokości 2,0 metra. Konstrukcja chodników z kostki betonowej typu Holland 8 cm w kolorze szarym. Należy zastosować ściek przykraweżnikowy z kostki betonowej 16x16 cm. "
 }
+
+// Check if there is existing projekt data if not use the example above
+function setProjektData () {
+  if (localStorage.getItem("projekt") != null) return;
+  localStorage.setItem("projekt", JSON.stringify(projekt));
+}
+setProjektData();
 
 ReactDOM.render(
   <React.StrictMode>

@@ -5,9 +5,12 @@ import donebtn from "../Icons/done_black_24dp.svg";
 import copyToClipboard from "../Functions/CopyToClipboard.js";
 
 function EditText({ id, className, fontSize, data, children }) {
+
+  const projekt = JSON.parse(localStorage.getItem("projekt"));
+
   const [isHover, setHover] = React.useState(false);
   const [isEditing, setEditing] = React.useState(false);
-  const [innerText, setInnerText] = React.useState(window.$projekt[data])
+  const [innerText, setInnerText] = React.useState(projekt[data])
 
   const inputLines = (data === "inwestor") ? "1" : "3";
 
@@ -16,7 +19,7 @@ function EditText({ id, className, fontSize, data, children }) {
   };
 
   const handleCopy = () => {
-    copyToClipboard(window.$projekt[data]);
+    copyToClipboard(projekt[data]);
   };
 
   const handleDone = () => {
@@ -25,8 +28,9 @@ function EditText({ id, className, fontSize, data, children }) {
   }
 
   const handleChange = (event) => {
-    window.$projekt[data] = event.target.value;
-    setInnerText(window.$projekt[data]);
+    projekt[data] = event.target.value;
+    localStorage.setItem("projekt", JSON.stringify(projekt));
+    setInnerText(projekt[data]);
   }
 
   const titleStyle = {
@@ -74,7 +78,7 @@ function EditText({ id, className, fontSize, data, children }) {
           rows={inputLines} 
           onChange={handleChange}
           style={inputStyle}
-          spellcheck="true">
+          spellCheck="true">
         </textarea>
         <button onClick={handleDone} style={btnStyle}>
           <img alt="Zatwierdź" src={donebtn} />

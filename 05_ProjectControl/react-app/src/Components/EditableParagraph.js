@@ -2,24 +2,28 @@ import React from "react";
 
 function EditableParagraph ({ title, data }) {
 
-  const [parData, setParData] = React.useState(window.$projekt[data]);
+  const projekt = JSON.parse(localStorage.getItem("projekt"));
+
+  const [parData, setParData] = React.useState(projekt[data]);
   const [isHover, setHover] = React.useState(false);
   const [isEditing, setEditing] = React.useState(false);
-
+  
   const styles = {
     div: {
       background: (isHover) ? "#eee" : "transparent",
       padding: "1px 0",
     },
     title: {
+      fontSize: "1.05rem",
       borderBottom: "1px solid #ddd",
       padding: 0,
       margin: "0.2rem 0",
       fontWeight: 500,
     },
     data: {
-      padding: 0,
+      padding: "0 0.5rem",
       margin: "0.2rem 0",
+      color: "#666",
     },
     button: {
       display: (isHover) ? "inline" : "none",
@@ -29,10 +33,10 @@ function EditableParagraph ({ title, data }) {
     },
     textarea: {
       width: "100%",
-      padding: "1rem",
+      padding: "0.2rem",
     }
   }
-  let btnText = isEditing ? "zapisz" : "Edytuj";
+  let btnText = isEditing ? "zapisz" : "edytuj";
 
   const handleMouseEnter = () => {
     setHover(true);
@@ -46,16 +50,29 @@ function EditableParagraph ({ title, data }) {
     isEditing ? setEditing(false) : setEditing(true);
   }
 
+  const handleChange = (e) => {
+    projekt[data] = e.target.value;
+    localStorage.setItem("projekt", JSON.stringify(projekt));
+    setParData(projekt[data]);
+  }
+
   if (isEditing) {
     return (
       <div 
         style={styles.div} 
         onMouseEnter={handleMouseEnter} 
         onMouseLeave={handleMouseLeave}>
-          <p style={styles.title}>{title}<p
-              style={styles.button}
-              onClick={handleClick}>({btnText})</p></p>
-          <textarea style={styles.textarea}></textarea>
+          <p style={styles.title}>{title}
+            <span style={styles.button}
+               onClick={handleClick}>
+              ({btnText})
+            </span>
+          </p>
+          <textarea 
+            style={styles.textarea} 
+            onChange={handleChange}
+            defaultValue={parData}>
+          </textarea>
       </div>
     )
   } else {
@@ -66,9 +83,9 @@ function EditableParagraph ({ title, data }) {
         onMouseLeave={handleMouseLeave}>
           <p 
             style={styles.title}>{title}
-            <p 
+            <span 
               style={styles.button}
-              onClick={handleClick}>(edytuj)</p></p>
+              onClick={handleClick}>(edytuj)</span></p>
           <p style={styles.data}>{parData}</p>
       </div>
     )
