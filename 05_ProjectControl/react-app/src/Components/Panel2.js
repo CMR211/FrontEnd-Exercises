@@ -1,5 +1,4 @@
 import React from "react";
-import EditableParagraph from "./EditableParagraph";
 import AgreementStatus from "./AgreementStatus";
 
 const divStyle = {

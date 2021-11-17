@@ -1,0 +1,71 @@
+{
+    "data": {
+        "relationships": {
+            "dataset": {
+                "data": {
+                    "type": "dataset",
+                    "id": "925"
+                },
+                "links": {
+                    "related": "https://api.dane.gov.pl/1.4/datasets/925,dziaki-katastralne-inspire-cp"
+                }
+            },
+            "institution": {
+                "data": {
+                    "type": "institution",
+                    "id": "40"
+                },
+                "links": {
+                    "related": "https://api.dane.gov.pl/1.4/institutions/40,glowny-urzad-geodezji-i-kartografii"
+                }
+            }
+        },
+        "type": "resource",
+        "id": "32331",
+        "attributes": {
+            "is_chart_creation_blocked": false,
+            "openness_score": 3,
+            "special_signs": [],
+            "modified": "2021-09-01T11:24:26Z",
+            "title": "Zestawienia zbiorcze EGIB 2021 WMS (API)",
+            "downloads_count": 0,
+            "views_count": 604,
+            "link": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/EGIB/WMS/KrajoweZestawienieZbiorcze2021?SERVICE=WMS&REQUEST=GetCapabilities",
+            "file_url": "",
+            "created": "2021-09-01T11:24:26Z",
+            "visualization_types": [],
+            "description": "<p><strong>Us\u0142uga przegl\u0105dania pozwalaj\u0105ca na pobieranie danych Krajowe Zestawienie Zbiorcze EGiB</strong></p>",
+            "verified": "2021-11-01T03:46:20Z",
+            "data_date": "2021-09-01",
+            "jsonld_file_size": null,
+            "csv_file_url": null,
+            "download_url": "",
+            "jsonld_file_url": null,
+            "file_size": null,
+            "category": "Administracja Publiczna",
+            "csv_download_url": null,
+            "jsonld_download_url": null,
+            "format": "xml",
+            "csv_file_size": null,
+            "media_type": "api"
+        },
+        "links": {
+            "self": "https://api.dane.gov.pl/1.4/resources/32331,zestawienia-zbiorcze-egib-2021-wms-api"
+        }
+    },
+    "jsonapi": {
+        "version": "1.0"
+    },
+    "meta": {
+        "relative_uri": "/1.4/resources/32331,zestawienia-zbiorcze-egib-2021-wms-api?lang=pl",
+        "params": {
+            "lang": "pl"
+        },
+        "path": "/1.4/resources/32331,zestawienia-zbiorcze-egib-2021-wms-api",
+        "language": "pl",
+        "server_time": "2021-11-17T11:41:41Z"
+    },
+    "links": {
+        "self": "http://api.dane.gov.pl/1.4/resources/32331,zestawienia-zbiorcze-egib-2021-wms-api?lang=pl"
+    }
+}

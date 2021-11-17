@@ -8,7 +8,7 @@ const projekt = JSON.parse(localStorage.getItem("projekt"));
 
 function AgreementStatus({ title, data }) {
   
-  if (projekt[data] == undefined) {projekt[data] = {status: "notNeeded", date: ""}};
+  if (projekt[data] === undefined) {projekt[data] = {status: "notNeeded", date: ""}};
 
   const [status, setStatus] = React.useState(projekt[data].status);
   const [isDivHover, setDivHover] = React.useState(false);
@@ -108,6 +108,7 @@ function AgreementStatus({ title, data }) {
     return (
       <div style={{margin: "0.5rem 0.3rem", display: "flex", flexFlow: "row wrap", }}>
         <img 
+          alt={status}
           style={styles.img} 
           src={iconStatus()} />
         <p style={{margin: "0 0.3rem", color: "#666"}}>{textStatus()} {agreementDate}</p>

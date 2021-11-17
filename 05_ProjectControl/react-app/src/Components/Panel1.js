@@ -1,6 +1,6 @@
 import React from "react";
 import EditableParagraph from "./EditableParagraph";
-import ParagraphTitle from "./ParagraphTitle";
+import Plots from "./Plots";
 
 const divStyle = {
   maxWidth: "40rem",
@@ -19,6 +19,7 @@ function Panel1(props) {
       <EditableParagraph title="Konstrukcja nawierzchni" data="konstrukcjaNawierzchni" />
       <EditableParagraph title="Informacje dodatkowe" data="informacjeDodatkowe" />
       <h3 className="parTitle">Działki</h3>
+      <Plots />
       <h3 className="parTitle">Linki</h3>
     </div>
   );
