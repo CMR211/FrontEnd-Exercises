@@ -16,8 +16,13 @@
 }
 
 body {
+    height: 100vh;
     background: var(--colormainbg);
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 p {
@@ -25,7 +30,6 @@ p {
 }
 
 .main-container {
-    margin: auto;
     padding: 20px;
     width: calc(375px - 2 * 24px);
     background: var(--colorcardbg);

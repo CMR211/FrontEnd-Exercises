@@ -15,13 +15,13 @@ const ICON = {
 }
 
 function App () {return(
-    <div className="main-container">
+    <main className="main-container">
         <Img src={TOKEN.image} name={TOKEN.name} />
         <Title title={TOKEN.name} description={TOKEN.description} />
         <Details price={TOKEN.price} daysleft={TOKEN.daysleft} />
         <Line />
         <Author author={TOKEN.author} avatar={TOKEN.avatar} />
-    </div>
+    </main>
 )}
 
 function Img ({ src, name }) {
