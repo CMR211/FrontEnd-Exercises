@@ -1,74 +1,96 @@
 import React from "react";
 import removeIcon from "../Icons/not_send_black_24dp.svg";
 import addIcon from "../Icons/add_circle_outline_black_24dp.svg";
+import axios from "axios";
+
+const examplePlots = [
+  "021402_4.0001.AR_21.2",
+  "021402_4.0001.AR_21.9",
+  "021402_4.0001.AR_21.10/4",
+  "021402_4.0001.AR_30.27", ]; 
+
+async function fetchPlotData (id) {
+  let response = await fetch(`https://uldk.gugik.gov.pl/?request=GetParcelByIdOrNr&id=${id}`) ;
+  response = await response.text();
+  return response;
+}
+
+async function changeFetchedResponse (id) {
+  let response = await fetchPlotData(id);
+  let dz = {};
+    if (id.includes("AR")) dz.arkusz = `AR${id.split(".").slice(-2,-1).toString().slice(-2)}`;
+    dz.identyfikator = id;
+    dz.nrDzialki = id.split(".").slice(-1).toString();
+  dz.powiat = await response.split("|").slice(0,1).toString().slice(2);
+  dz.gmina = await response.split("|").slice(1,2).toString();
+  dz.gmina = await response.split("|").slice(1,2).toString();
+  dz.obreb = await response.split("|").slice(2,3).toString();
+  return dz;
+}
+
+async function mapPlotsDataToPlotsID (array) {
+  const newArray = [];
+  let i = 0;
+  for (let item of array) {
+    newArray[i] = await changeFetchedResponse(item);
+    i++      
+  }
+  console.table(newArray)
+  return newArray;
+}
 
 function Plots(props) {
 
-  const examplePlots = [
-    { id: 1, identyfikator: "021402_4.0001.AR_31.2/4" },
-    { id: 2, identyfikator: "021402_4.0001.AR_31.42/18" },
-    { id: 3, identyfikator: "021402_4.0001.AR_31.42/2" },
-  ]; 
+  const [plotIdList, setPlotIdList] = React.useState(examplePlots);  
+  const [plotFullList, setPlotFullList] = React.useState();
 
-  const [arrPlots, setArrPlots] = React.useState(examplePlots);
-
-  React.useEffect(() => {
-
-    const getPlotDataFromWeb = () => {
-
-      const plotID = "021402_4.0001.AR_31.2/4";
-
-      fetch(`https://uldk.gugik.gov.pl/?request=GetParcelByIdOrNr&id=${plotID}`)
-      .then(res => res.text())
-
-      .then(text => {
-        let dzialka = {};
-        dzialka.identyfikator = plotID;
-        dzialka.powiat = text.split("|").slice(0,1).toString().slice(2);
-        dzialka.gmina = text.split("|").slice(1,2).toString();
-        dzialka.gmina = text.split("|").slice(1,2).toString();
-        dzialka.obreb = text.split("|").slice(2,3).toString();
-        dzialka.nrDzialki = plotID.split(".").slice(-1).toString();
-        if (plotID.includes("AR")) dzialka.arkusz = `AR${plotID.split(".").slice(-2,-1).toString().slice(-2)}`;
-        setArrPlots(dzialka)
-      })
-
+  React.useEffect( () => {
+    async function onmount () {
+      let temp = await mapPlotsDataToPlotsID(plotIdList)
+      setPlotFullList(temp);
     }
-
-    getPlotDataFromWeb();
-
-  }, [])
+    onmount();
+  }, [plotIdList]);
 
   function handleRemoveItem(key) {
-    setArrPlots(arrPlots.filter((item) => item.id !== key));
+    setPlotIdList(plotFullList.filter((item) => item.identyfikator !== key));
   }
 
-  const handleAddItem = (event) => {};
+  function handleAddItem (event) {};
 
+  console.table(plotFullList);
+  
   const ListOfPlots = mapPlots();
-
   function mapPlots() {
 
-    if (arrPlots === undefined) return console.log("Error, arrPlots is undefined")  ;
-    if (arrPlots.length === 0) return;
+    if (plotFullList === undefined) return console.log("Error, arrPlots is undefined")  ;
+    if (plotFullList.length === 0) return;
 
-
-    return arrPlots.map((item) => (
-      <li style={{ margin: "0 0 0.5rem 0" }} key={item.id}>
+    return plotFullList.map((item) => (
+      <li style={{ margin: "0 0 0.5rem 0" }} key={item.identyfikator}>
         <span>
           <span style={{ margin: "0 1rem 0 0" }}>
             Identyfikator:{" "}
             <span style={{ fontWeight: "bold" }}>{item.identyfikator} </span>
           </span>
           <span style={{ margin: "0 1rem 0 0" }}>
-            Nr działki: <span style={{ fontWeight: "bold" }}>{item.nr}</span>
+            Arkusz mapy: <span style={{ fontWeight: "bold" }}>{item.arkusz}</span>
           </span>
           <span style={{ margin: "0 1rem 0 0" }}>
-            Obręb: <span style={{ fontWeight: "bold" }}>{item.obrebnr}</span>
+            Nr działki: <span style={{ fontWeight: "bold" }}>{item.nrDzialki}</span>
+          </span>
+          <span style={{ margin: "0 1rem 0 0" }}>
+            Obręb: <span style={{ fontWeight: "bold" }}>{item.obreb}</span>
+          </span>
+          <span style={{ margin: "0 1rem 0 0" }}>
+            Gmina: <span style={{ fontWeight: "bold" }}>{item.gmina}</span>
+          </span>
+          <span style={{ margin: "0 1rem 0 0" }}>
+            powiat: <span style={{ fontWeight: "bold" }}>{item.obreb}</span>
           </span>
         </span>
         <PlotButton
-          onClick={() => handleRemoveItem(item.id)}
+          onClick={() => handleRemoveItem(item.identyfikator)}
           text="Usuń działkę"
           icon={removeIcon}></PlotButton>
       </li>
