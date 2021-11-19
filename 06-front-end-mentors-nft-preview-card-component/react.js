@@ -50,7 +50,7 @@ function Img ({ src, name }) {
 function Title ({ title, description }) {
     const [isHover, setHover] = React.useState(false);
     const styles = {
-        color: isHover ? "var(--colorcyan)" : "inherit",
+        color: isHover ? "var(--colorcyan)" : "var(--colorwhite)",
         cursor: isHover ? "pointer" : "default",
     }
     const handleMouseEnter = () => setHover(true);

@@ -72,6 +72,10 @@ p {
     font-weight: 500;
 }
 
+.details>.inrow>p {
+    font-size: 0.9rem;
+}
+
 h1 {
     color: var(--colorwhite);
     margin: 1rem 0;
