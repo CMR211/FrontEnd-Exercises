@@ -18,12 +18,15 @@
     --color-desaturatedblue: hsl(235, 45%, 61%);
     --color-paleblue: hsl(236, 100%, 87%);
 
-    --box-width: calc(375px - 2 * 20px);
+
 }
 
 body {
     background: var(--color-verydarkblue);
-    padding: 1rem;
+    display: grid;
+    place-items: center;
+    padding-bottom: 2rem;
+    --box-width: calc(375px - 2 * 1rem);
 }
 
 header {
@@ -87,11 +90,18 @@ navitem button:hover {
 
 navitem button:focus-within {
     background: var(--color-verydarkblue);
+    border-radius: 0.25em;
     outline: var(--color-verydarkblue) solid 10px;
 }
 
+main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .card {
-    margin: 0rem auto;
     border-radius: 1rem;
     width: var(--box-width);
     padding-top: 2rem;
@@ -168,4 +178,87 @@ navitem button:focus-within {
     transform: translateY(0.4rem);
     font-size: 0.8rem;
     color: var(--color-paleblue)
+}
+
+@media (min-width: 1400px) {
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0 4rem;
+        grid-template-columns: 1fr 2fr;
+        gap: 1rem;
+        --box-width: 250px;
+    }
+    header {
+        justify-self: end;
+        margin: 0;
+        padding: 0;
+    }
+    header div {
+        display: flex;
+        flex-direction: column;
+    }
+    header div div {
+        height: 20.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header img {
+        margin: 2rem;
+        transform: scale(1.5);
+    }
+    header #h-t-name {
+        font-size: 2rem;
+    }
+    header nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-left: 2rem;
+        flex-grow: 1;
+        margin: 0;
+    }
+    main {
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-self: start;
+    }
+    .card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        gap: 1rem;
+    }
+    .card-time {
+        padding-top: 1rem;
+        font-size: 2.5rem;
+    }
+    .card-lasttime {
+        align-self: flex-start;
+    }
+}
+
+
+
+
+footer {
+    bottom: 0.5rem;
+    position: fixed;
+}
+
+footer div {
+    display: flex;
+    gap: 1rem;
+}
+
+footer div p,
+footer div a {
+    font-size: 0.5rem;
+    color: var(--color-desaturatedblue)
+}
+
+footer div a:hover {
+    color: white;
 }

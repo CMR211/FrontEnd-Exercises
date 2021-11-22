@@ -1,3 +1,4 @@
+// PROVIDED DATA
 const DATA = [
     {
       "title": "Work",
@@ -103,9 +104,38 @@ const DATA = [
     }
   ]
 
-const main = document.getElementById("main");
 
+// CONSTANTS
 let timerange = "weekly";
+const main = document.getElementById("main");
+const htmlButtons = [
+  document.getElementById("btn-daily"), 
+  document.getElementById("btn-weekly"), 
+  document.getElementById("btn-monthly")];
+
+
+// GENERATE CARDS ON FIRST RUN
+main.innerHTML = DATA.map((item) => cardTemplate(item)).join(" ");
+
+
+// BUTTONS EVENT LISTENERS
+htmlButtons[0].addEventListener("click", () => {
+  timerange = "daily"; 
+  main.innerHTML = DATA.map((item) => cardTemplate(item)).join(" ") 
+} );
+
+htmlButtons[1].addEventListener("click", () => {
+  timerange = "weekly";
+  main.innerHTML = DATA.map((item) => cardTemplate(item)).join(" ")
+} );
+
+htmlButtons[2].addEventListener("click", () => {
+  timerange = "monthly";
+  main.innerHTML = DATA.map((item) => cardTemplate(item)).join(" "); 
+} );
+
+
+// FUNCTIONS
 function lasttimerange (timerange) {
     if (timerange === "daily") return "Last day"
     if (timerange === "weekly") return "Last week"
@@ -116,13 +146,11 @@ function cardTemplate (item) {return (`
     <div class="card" id="card-${item.title.split(" ").join("").toLowerCase()}">
         <div class="card-bottom">
             <div>
-                <p class="card-title" id="title-${item.title.toLowerCase()}">${item.title}</p>
-                <p class="card-time" id="time-${item.title.toLowerCase()}">${item.timeframes[timerange].current}hrs</p>
+                <p class="card-title" id="title-${item.title.split(" ").join("").toLowerCase()}">${item.title}</p>
+                <p class="card-time" id="time-${item.title.split(" ").join("").toLowerCase()}">${item.timeframes[timerange].current}hrs</p>
             </div>
             <p class="card-lasttime">${lasttimerange(timerange)} - ${item.timeframes[timerange].previous}hrs</p>
             <button><img src="./images/icon-ellipsis.svg"></button>
         </div>
     </div>
 `)};
-
-main.innerHTML = DATA.map((item) => cardTemplate(item))
