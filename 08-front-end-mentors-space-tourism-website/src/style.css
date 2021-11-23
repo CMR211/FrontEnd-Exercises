@@ -1,0 +1,112 @@
+/* 1. Global styles */
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 1.1. Global fonts and colors */
+
+* {
+    --color-dark: hsl(230deg 35% 7%);
+    --color-blue: hsl(231deg 77% 90%);
+    --color-white: hsl(0deg 0% 100%);
+
+    --font-heading: "Bellefair", serif;
+    --font-text: "Barlow Condensed", sans-serif;
+    color: var(--color-white);
+    font-weight: 400;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 150px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 100px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-family: var(--font-text);
+    font-size: 28px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-blue)
+}
+
+.subheading1 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.subheading2 {
+    font-family: var(--font-text);
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+.subheading2 {
+    font-family: var(--font-text);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.navtext {
+    font-family: var(--font-text);
+    font-size: 16px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+.bodytext {
+    font-family: var(--font-text);
+    font-size: 18px;
+}
+
+/* 1.2. Set backgrounds for different resolutions */
+
+body {
+    background-image: url("./assets/home/background-home-mobile.jpg");
+    background-color: var(--color-dark);
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 374px) {
+    body {
+        background-position: left 0 top calc(100vh - 667px);
+    }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+    body {
+        background-image: url("./assets/home/background-home-tablet.jpg");
+        background-position: left 0 top calc(100vh - 1024px);
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        background-image: url("./assets/home/background-home-desktop.jpg");
+        background-position: top right;
+    }
+}
