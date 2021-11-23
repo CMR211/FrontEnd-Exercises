@@ -1,38 +1,54 @@
+let lang = 0;
+
 function App() {
+
+  const [lang, setLang] = React.useState(0);
+
   return (
     <React.Fragment>
-      <NavbarMobile />
-      <FrontPage />
+      <NavbarMobile setLang={setLang} />
+      <FrontPage language={lang} />
+      {/* <Destination /> */}
     </React.Fragment>
   )
 }
 
-function FrontPage () {
-  return (
-    <div className="flex main" id="frontpage">
-      <div className="flex">
-        <h5>So, you want to travel to</h5>
-        <h1>Space</h1>
-        <p className="bodytext">
-          Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!
-        </p>
-      </div>
-      <button className="big-btn" id="frontpage-btn">Explore</button>
-    </div>
-  );
-}
-
-function NavbarMobile () {
+function NavbarMobile ( {setLang} ) {
   return (
     <div className="navbar">
       <img src="./assets/shared/logo.svg" />
       <div>
         <div id="languages">
-          <p className="bodytext lang">PL</p>
-          <p className="bodytext lang">EN</p>
+          <button className="btn-lang" onClick={() => setLang(1)}>PL</button>
+          <button className="btn-lang" onClick={() => setLang(0)}>EN</button>
         </div>    
         <img src="./assets/shared/icon-hamburger.svg" />
       </div>
+    </div>
+  )
+}
+
+console.log(typeof DATA);
+console.table(DATA);
+
+function FrontPage ( {language} ) {
+
+  return (
+    <div className="flex main" id="frontpage">
+      <div className="flex">
+        <h5>{DATA.headings.frontpage.subheading[language]}</h5>
+        <h1>{DATA.headings.frontpage.title[language]}</h1>
+        <p className="bodytext">{DATA.headings.frontpage.paragraph[language]}</p>
+      </div>
+      <button className="big-btn" id="frontpage-btn">{DATA.headings.frontpage.button[language]}</button>
+    </div>
+  );
+}
+
+function Destination () {
+  return (
+    <div>
+
     </div>
   )
 }
