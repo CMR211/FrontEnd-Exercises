@@ -1,11 +1,12 @@
-/* 1. Global styles */
+/* 1.  Global styles */
 
 * {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-/* 1.1. Global fonts and colors */
+/* 1.1.  Global variables */
 
 * {
     --color-dark: hsl(230deg 35% 7%);
@@ -14,99 +15,164 @@
 
     --font-heading: "Bellefair", serif;
     --font-text: "Barlow Condensed", sans-serif;
+
+    --font-size-multiplier: 1;
+
     color: var(--color-white);
     font-weight: 400;
 }
 
+@media (max-width: 767px) {
+    * {
+        --font-size-multiplier: calc(80/150);
+        --body-font-multiplier: calc(25/28);
+    }
+}
+
+/* 1.2.  Headings and text-styles */
+
 h1 {
     font-family: var(--font-heading);
-    font-size: 150px;
+    font-size: calc(150px * var(--font-size-multiplier));
     text-transform: uppercase;
 }
 
 h2 {
     font-family: var(--font-heading);
-    font-size: 100px;
+    font-size: calc(100px * var(--font-size-multiplier));
     text-transform: uppercase;
 }
 
 h3 {
     font-family: var(--font-heading);
-    font-size: 56px;
+    font-size: calc(56px * var(--font-size-multiplier));
     text-transform: uppercase;
 }
 
 h4 {
     font-family: var(--font-heading);
-    font-size: 32px;
+    font-size: calc(32px * var(--font-size-multiplier));
     text-transform: uppercase;
 }
 
 h5 {
     font-family: var(--font-text);
-    font-size: 28px;
-    letter-spacing: 0.3em;
+    font-size: calc(28px * var(--font-size-multiplier));
+    letter-spacing: 0.17em;
     text-transform: uppercase;
-    font-weight: 400;
     color: var(--color-blue)
 }
 
 .subheading1 {
     font-family: var(--font-heading);
-    font-size: 28px;
+    font-size: calc(28px * var(--font-size-multiplier));
     text-transform: uppercase;
 }
 
 .subheading2 {
     font-family: var(--font-text);
-    font-size: 14px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-}
-
-.subheading2 {
-    font-family: var(--font-text);
-    font-size: 14px;
-    letter-spacing: 0.15em;
+    font-size: calc(14px * var(--font-size-multiplier));
+    letter-spacing: 0.17em;
     text-transform: uppercase;
 }
 
 .navtext {
     font-family: var(--font-text);
-    font-size: 16px;
-    letter-spacing: 0.3em;
+    font-size: calc(16px * var(--font-size-multiplier));
+    letter-spacing: 0.17em;
     text-transform: uppercase;
 }
 
 .bodytext {
+    color: var(--color-blue);
     font-family: var(--font-text);
-    font-size: 18px;
+    font-size: calc(18px * var(--body-font-multiplier));
+    line-height: 1.78em;
+    font-weight: 200;
+    letter-spacing: 0.056em;
 }
 
-/* 1.2. Set backgrounds for different resolutions */
+/* 1.3.  Set backgrounds for different resolutions */
 
 body {
+    width: 100vw;
+    height: 100vh;
     background-image: url("./assets/home/background-home-mobile.jpg");
     background-color: var(--color-dark);
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
 }
 
-@media (max-width: 374px) {
-    body {
-        background-position: left 0 top calc(100vh - 667px);
-    }
-}
-
-@media (min-width: 375px) and (max-width: 767px) {
+@media (min-width: 600px) and (max-width: 1000px) {
     body {
         background-image: url("./assets/home/background-home-tablet.jpg");
-        background-position: left 0 top calc(100vh - 1024px);
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     body {
+        background-position: right;
         background-image: url("./assets/home/background-home-desktop.jpg");
-        background-position: top right;
     }
+}
+
+/* 2.  Navbar */
+
+.navbar {
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar img {
+    scale: calc(40 / 48);
+}
+
+.navbar img+img {
+    scale: 1;
+}
+
+.navbar div {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+
+}
+
+/* 3.  Main page styles */
+
+.main {
+    height: 100%;
+    padding: 24px;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+}
+
+.main * {
+    text-align: center;
+}
+
+.big-btn {
+    width: 7.5em;
+    height: 7.5em;
+    border-radius: 50%;
+    border: none;
+    color: var(--color-dark);
+    font-family: var(--font-heading);
+    letter-spacing: 0.054em;
+    text-transform: uppercase;
+    font-size: calc(38px * var(--font-size-multiplier));
+}
+
+.big-btn:hover {
+    box-shadow: 0 0 0 3.75em rgba(255, 255, 255, 0.1);
 }
