@@ -8,11 +8,6 @@
 
 /* 1.1.  Global variables */
 
-html {
-    width: 100vw;
-    height: 100vh;
-}
-
 * {
     --color-dark: hsl(230deg 35% 7%);
     --color-blue: hsl(231deg 77% 90%);
@@ -21,48 +16,39 @@ html {
     --font-heading: "Bellefair", serif;
     --font-text: "Barlow Condensed", sans-serif;
 
-    --font-size-multiplier: 1;
-
     color: var(--color-white);
     font-weight: 400;
-}
-
-@media (max-width: 600px) {
-    * {
-        --font-size-multiplier: calc(80/150);
-        --body-font-multiplier: calc(25/28);
-    }
 }
 
 /* 1.2.  Headings and text-styles */
 
 h1 {
     font-family: var(--font-heading);
-    font-size: calc(150px * var(--font-size-multiplier));
+    font-size: clamp(80px, 21.33vw, 150px);
     text-transform: uppercase;
 }
 
 h2 {
     font-family: var(--font-heading);
-    font-size: calc(100px * var(--font-size-multiplier));
+    font-size: clamp(56px, calc(52.5px + 3.93vw), 100px);
     text-transform: uppercase;
 }
 
 h3 {
     font-family: var(--font-heading);
-    font-size: calc(56px * var(--font-size-multiplier));
+    font-size: clamp(28px, calc(24.5px + 2.21vw), 56px);
     text-transform: uppercase;
 }
 
 h4 {
     font-family: var(--font-heading);
-    font-size: calc(32px * var(--font-size-multiplier));
+    font-size: clamp(24px, calc(18.5px + 1.93vw), 32px);
     text-transform: uppercase;
 }
 
 h5 {
     font-family: var(--font-text);
-    font-size: calc(28px * var(--font-size-multiplier));
+    font-size: clamp(16px, calc(11px + 2.43vw), 28px);
     letter-spacing: 0.17em;
     text-transform: uppercase;
     color: var(--color-blue)
@@ -70,13 +56,13 @@ h5 {
 
 .subheading1 {
     font-family: var(--font-heading);
-    font-size: calc(28px * var(--font-size-multiplier));
+    font-size: clamp(16px, calc(12.5px + 2.21vw), 28px);
     text-transform: uppercase;
 }
 
 .subheading2 {
     font-family: var(--font-text);
-    font-size: calc(14px * var(--font-size-multiplier));
+    font-size: 16px;
     letter-spacing: 0.17em;
     text-transform: uppercase;
 }
@@ -91,7 +77,7 @@ h5 {
 .bodytext {
     color: var(--color-blue);
     font-family: var(--font-text);
-    font-size: calc(18px * var(--body-font-multiplier));
+    font-size: clamp(15px, calc(5px + 1.57vw), 18px);
     line-height: 1.78em;
     font-weight: 200;
     letter-spacing: 0.056em;
@@ -123,6 +109,11 @@ body {
 }
 
 /* 1.4.  Set react-app to fully stretch */
+
+html {
+    width: 100vw;
+    height: 100vh;
+}
 
 #react-app {
     width: 100%;
@@ -161,24 +152,58 @@ body {
     font-family: var(--font-text);
 }
 
-/* 3.  Main page styles */
+#mobile-navbar {
+    position: fixed;
+    width: 60vw;
+    height: 100vh;
+    /* background-color: blue; */
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3em;
+    z-index: 1;
+    backdrop-filter: blur(20px);
+}
 
-main {
+#mobile-navbar button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+}
+
+#mobile-navbar div p:first-child {
+    font-weight: bold;
+}
+
+/* #mobile-navbar */
+
+/* 3.  Frontpage page styles */
+
+#frontpage {
     height: calc(100% - 96px);
     padding: 24px;
 }
 
-main * {
+#frontpage * {
     text-align: center;
 }
 
-main>div {
+#frontpage>div {
     display: flex;
     flex-direction: column;
     gap: 2em;
     align-items: center;
+    max-width: 30rem;
 }
 
+@media (min-width: 1000px) {
+    #frontpage {
+        margin-right: 50vw;
+    }
+}
 
 .big-btn {
     margin-top: 1em;
@@ -190,7 +215,7 @@ main>div {
     font-family: var(--font-heading);
     letter-spacing: 0.054em;
     text-transform: uppercase;
-    font-size: calc(38px * var(--button-multiplier));
+    font-size: clamp(20px, 5vw, 32px);
 }
 
 .big-btn:hover {

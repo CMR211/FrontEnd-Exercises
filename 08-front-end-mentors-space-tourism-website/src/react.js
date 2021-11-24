@@ -27,37 +27,51 @@ function App() {
 
   return (
     <React.Fragment>
-      <NavbarMobile setLang={setLang} windowWidth={windowWidth}/>
+      <Navbar language={lang} setLang={setLang} windowWidth={windowWidth}/>
       <FrontPage language={lang} />
       {/* <Destination /> */}
     </React.Fragment>
   )
 }
 
-function NavbarMobile ( {setLang} ) {
+function Navbar ( {setLang, language} ) {
 
-  const [fullwidth, setFullwidth] = React.useState(true);
-
-  const displayStyle = {
-    display: fullwidth ? "none" : "block",
-  }
+  const [isActive, setActive] = React.useState(false);
 
   function isBigScreen () {
     return (window.innerWidth >= 768)
   }
 
-  function toggleFullwidth () { setFullwidth(!fullwidth) };
+  function toggleActive () { setActive(!isActive) };
   
-  function Fullnavbar () {
+  function MobileNavbar () {
     return (
-      <div>
-
+      <div 
+      id="mobile-navbar"
+      style={{display: isActive ? "flex" : "none" }}>
+        <div>
+          <p className="navtext">00</p>
+          <p className="navtext">{DATA.headings.navbar.home[language]}</p>
+        </div>
+        <div>
+          <p className="navtext">01</p>
+          <p className="navtext">{DATA.headings.navbar.destination[language]}</p>
+        </div>
+        <div>
+          <p className="navtext">02</p>
+          <p className="navtext">{DATA.headings.navbar.crew[language]}</p>
+        </div>
+        <div>
+          <p className="navtext">03</p>
+          <p className="navtext">{DATA.headings.navbar.technology[language]}</p>
+        </div>
       </div>
     )
   }
 
   return (
     <div className="navbar">
+      <MobileNavbar language={language} />
       <div>
       <img src="./assets/shared/logo.svg" />
         <div id="languages">
@@ -65,9 +79,23 @@ function NavbarMobile ( {setLang} ) {
           <button className="btn-lang" onClick={() => setLang(0)}>EN</button>
         </div>    
       </div>
-      <button className="btn-hamburger btn-lang" onClick={toggleFullwidth} style={{display: isBigScreen() ? "none" : "block"}}>
+      <button 
+        className="btn-hamburger btn-lang" 
+        onClick={toggleActive} 
+        style={{
+         display: isBigScreen() ? "none" : "block",
+         display: isActive ? "none" : "block"}}>
         <img src="./assets/shared/icon-hamburger.svg" />
       </button>
+      <button 
+        className="btn-hamburger btn-lang" 
+        onClick={toggleActive} 
+        style={{
+          display: isBigScreen() ? "none" : "block",
+          display: isActive ? "block" : "none",
+          zIndex: 2}}>
+            <img src="./assets/shared/icon-close.svg" />
+        </button>
     </div>
   )
 }
