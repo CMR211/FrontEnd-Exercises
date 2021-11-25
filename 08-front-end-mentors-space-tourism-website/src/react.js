@@ -209,6 +209,7 @@ function DestinationPage ( {language} ) {
 
   const [currentPlanet, setCurrentPlanet] = React.useState(0);
 
+
   return (
     <div id="destinationpage">
       <h5>
@@ -216,7 +217,7 @@ function DestinationPage ( {language} ) {
         {DATA.headings.destinationpage.title[language]}
       </h5>
       <div>
-        <img src=`./assets/destination/image-${DATA.destinations[currentPlanet].name}.webp` />
+        <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0]}.webp`} />
         <div id="planet-navbar">
           <p className="navtext">{DATA.destinations[0].name[language]}</p>
           <p className="navtext">{DATA.destinations[1].name[language]}</p>
