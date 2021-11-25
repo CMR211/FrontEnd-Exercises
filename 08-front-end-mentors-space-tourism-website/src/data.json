@@ -11,6 +11,11 @@
       "destination": ["destination", "cel podróży"],
       "crew": ["crew", "załoga"],
       "technology": ["technology", "technologia"]
+    },
+    "destinationpage": {
+      "title": ["Pick your destination", "Wybierz cel swojej podróży"],
+      "distance": ["Avg. distance", "Śr. odległość"],
+      "traveltime": ["Est. travel time", "Przewidywana dł. lotu"]
     }
   },
   "destinations": [

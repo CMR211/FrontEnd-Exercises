@@ -125,7 +125,7 @@ html {
 .navbar {
     width: 100%;
     height: 96px;
-    padding: 24px;
+    padding-left: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,6 +152,16 @@ html {
     font-family: var(--font-text);
 }
 
+.navbar button:hover {
+    cursor: pointer;
+    color: var(--color-blue)
+}
+
+.navbar #navbar-btn-container {
+    padding-right: 24px;
+    z-index: 2;
+}
+
 #mobile-navbar {
     position: fixed;
     width: 60vw;
@@ -176,6 +186,32 @@ html {
 
 #mobile-navbar div p:first-child {
     font-weight: bold;
+    width: 1.8em;
+}
+
+#touch-space {
+    position: fixed;
+    left: 0;
+    top: 96px;
+    transform: translateX(-40vw);
+    height: 100vh;
+    width: 40vw;
+}
+
+#fullscreen-navbar {
+    padding: 0 24px;
+    background: rgba(255, 255, 255, 0.06);
+    height: 100%;
+    gap: 3em;
+}
+
+#fullscreen-navbar div {
+    height: calc(100% - 4px);
+}
+
+#fullscreen-navbar div:hover {
+    cursor: pointer;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* #mobile-navbar */
@@ -227,4 +263,16 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+/* 4.  Destination page styles */
+
+#destinationpage {
+    display: flex;
+    flex-direction: column;
+}
+
+#destinationpage h5 span {
+    color: gray;
+    margin-right: 1em;
 }
