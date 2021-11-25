@@ -226,7 +226,7 @@ function DestinationPage ( {language} ) {
         {DATA.headings.destinationpage.title[language]}
       </h5>
       <div>
-        <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0]}.webp`} />
+        <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0]}.png`} />
         <div id="planet-navbar">
           <p onClick={() => setCurrentPlanet(0)} className="navtext">{DATA.destinations[0].name[language]}</p>
           <p onClick={() => setCurrentPlanet(1)} className="navtext">{DATA.destinations[1].name[language]}</p>
