@@ -46,17 +46,27 @@ function App() {
   // Global state of window size to determine various comonents visibility
   const windowWidth = useWindowDimensions();
 
+  function getBackgroundImage () {
+    const pages = ["home", "destination", "crew", "technology"];
+    let page = pages[currentPage];
+    let media = "desktop";
+    if (windowWidth <= 1000) media = "tablet";
+    if (windowWidth <= 600) media = "mobile";
+    let result = `./assets/${page}/background-${page}-${media}.jpg`
+    return result
+  }
+
   return (
-    <React.Fragment>
+    <div style={{ backgroundImage: `url(${getBackgroundImage()})`, backgroundSize: "cover", width: "100%", height: "100%"}}>
       <Navbar 
         language={lang} 
         setLang={setLang} 
         windowWidth={windowWidth} 
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}/>
-      {currentPage === 0 ? <FrontPage language={lang} /> : null}
-      {currentPage === 1 ? <DestinationPage language={lang} /> : null}
-    </React.Fragment>
+      {currentPage === 0 ? <FrontPage language={lang} windowWidth={windowWidth} /> : null}
+      {currentPage === 1 ? <DestinationPage language={lang} windowWidth={windowWidth} /> : null}
+    </div>
   )
 }
 
@@ -183,8 +193,7 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
 
 
 
-function FrontPage ( {language} ) {
-
+function FrontPage ( {language, windowWidth} ) {
   return (
     <main id="frontpage">
       <div>
@@ -192,7 +201,7 @@ function FrontPage ( {language} ) {
         <h1>{DATA.headings.frontpage.title[language]}</h1>
         <p className="bodytext">{DATA.headings.frontpage.paragraph[language]}</p>
       </div>
-      <button className="big-btn" id="frontpage-btn">{DATA.headings.frontpage.button[language]}</button>
+      <button className="big-btn ripple" id="frontpage-btn">{DATA.headings.frontpage.button[language]}</button>
     </main>
   );
 }
@@ -219,12 +228,19 @@ function DestinationPage ( {language} ) {
       <div>
         <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0]}.webp`} />
         <div id="planet-navbar">
-          <p className="navtext">{DATA.destinations[0].name[language]}</p>
-          <p className="navtext">{DATA.destinations[1].name[language]}</p>
-          <p className="navtext">{DATA.destinations[2].name[language]}</p>
-          <p className="navtext">{DATA.destinations[3].name[language]}</p>
+          <p onClick={() => setCurrentPlanet(0)} className="navtext">{DATA.destinations[0].name[language]}</p>
+          <p onClick={() => setCurrentPlanet(1)} className="navtext">{DATA.destinations[1].name[language]}</p>
+          <p onClick={() => setCurrentPlanet(2)} className="navtext">{DATA.destinations[2].name[language]}</p>
+          <p onClick={() => setCurrentPlanet(3)} className="navtext">{DATA.destinations[3].name[language]}</p>
         </div>
         <h2>{DATA.destinations[currentPlanet].name[language]}</h2>
+        <p className="bodytext">{DATA.destinations[currentPlanet].description[language]}</p>
+        <div id="planet-details">
+          <p className="navtext">{DATA.headings.destinationpage.distance[language]}</p>
+          <h4>{DATA.destinations[currentPlanet].distance[language]}</h4>
+          <p className="navtext">{DATA.headings.destinationpage.traveltime[language]}</p>
+          <h4>{DATA.destinations[currentPlanet].travel[language]}</h4>
+        </div>
       </div>
     </div>
   )
