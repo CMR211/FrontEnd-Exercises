@@ -489,13 +489,34 @@ body {
 }
 
 @media (min-width: 700px) {
+
     #crewpage h5 {
         align-self: flex-start;
     }
 }
 
 @media (min-width: 1300px) {
+
     #crewpage h5 {
         margin: 3rem 8rem;
+    }
+
+    #crewpage-img-div {
+        position: absolute;
+        bottom: 0;
+        right: 20%;
+        transform: translateY(-50%);
+    }
+
+    #crewpage-img-div img {
+        transform: scale(2);
+    }
+
+    #crewpage-bio-div {
+        transform: translate(-20vw, 15vh);
+    }
+
+    #crewpage-btn-div {
+        transform: translate(-20vw, 15vh);
     }
 }
