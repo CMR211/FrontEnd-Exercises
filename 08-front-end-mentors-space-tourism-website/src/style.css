@@ -1,23 +1,38 @@
-/* 1.  Global styles */
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+
+/* TABLE OF CONTENTS */
+
+
+/* TODO */
+
+
+
+/* 1.  Global styles */
 
 /* 1.1.  Global variables */
 
 * {
+    /* quick css fixes */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    /* colors given */
     --color-dark: hsl(230deg 35% 7%);
     --color-blue: hsl(231deg 77% 90%);
     --color-white: hsl(0deg 0% 100%);
 
+    /* fonts given */
     --font-heading: "Bellefair", serif;
     --font-text: "Barlow Condensed", sans-serif;
 
+    /* general text styling */
     color: var(--color-white);
     font-weight: 400;
+}
+
+img {
+    display: block;
 }
 
 /* 1.2.  Headings and text-styles */
@@ -89,18 +104,18 @@ h5 {
 /* 1.4.  Set react-app to fully stretch */
 
 html {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 }
 
 #react-app {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 }
 
 /* 1.5.  Ripple buttons */
@@ -120,7 +135,13 @@ body {
     transition: background 0s;
 }
 
+
+
+
+
 /* 2.  Navbar */
+
+/* 2.1.  General navbar styles */
 
 .navbar {
     width: 100%;
@@ -162,6 +183,8 @@ body {
     z-index: 2;
 }
 
+/* 3.2.  Mobile navbar styles */
+
 #mobile-navbar {
     position: fixed;
     width: 60vw;
@@ -189,6 +212,16 @@ body {
     width: 1.8em;
 }
 
+#mobile-navbar p+p {
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+#mobile-navbar p+p:hover {
+    cursor: pointer;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+}
+
 #touch-space {
     position: fixed;
     left: 0;
@@ -197,6 +230,8 @@ body {
     height: 100vh;
     width: 40vw;
 }
+
+/* 3.3.  Fullscreen navbar styles */
 
 #fullscreen-navbar {
     padding: 0 24px;
@@ -217,11 +252,20 @@ body {
 
 /* #mobile-navbar */
 
+
+
+
+
+
 /* 3.  Frontpage page styles */
 
 #frontpage {
-    height: calc(100% - 96px);
+    min-height: calc(100vh - 96px);
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #frontpage * {
@@ -263,24 +307,22 @@ body {
     }
 }
 
-#frontpage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
+
+
+
 
 /* 4.  Destination page styles */
 
 #destinationpage {
     width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 96px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3% 24px;
-    gap: 1%;
+    padding: 2rem 24px;
+    gap: 2rem;
 }
+
 @media (min-width: 700px) {
     #destinationpage h5 {
         align-self: flex-start;
@@ -301,11 +343,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3vh;
-    padding: 0 4em 2em 4em;
+    gap: 2rem;
 }
 
 #destinationpage>div>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    padding: 0 4em 0 4em;
+    gap: 1rem;
+}
+
+#destinationpage>div>div>div {
     display: flex;
     flex-direction: row;
     gap: 2em;
@@ -313,14 +363,139 @@ body {
 
 #destinationpage p {
     text-align: center;
+    max-width: 40rem;
+}
+
+#destinationpage .border-bottom {
+    width: min(50vw, 30rem);
+    border-bottom: 2px solid #3b3b4b;
+}
+
+#destinationpage #planet-navbar .navtext {
+    padding-bottom: 1rem;
+    --border-style: 2px solid transparent;
+}
+
+#destinationpage #planet-navbar .navtext:hover {
+    --border-style: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
 }
 
 #destinationpage #planet-details {
     flex-direction: column;
     gap: 0.5em;
     align-items: center;
+    text-align: center;
 }
 
-#destinationpage .navtext {
-    color: rgba(255, 255, 255, 0.623);
+#destinationpage #planet-details p {
+    color:rgba(255, 255, 255, 0.5)
+}
+
+#destinationpage #planet-details h4+p {
+    margin-top: 1rem;
+}
+
+
+@media (min-width: 1300px) {
+
+    #destinationpage h5 {
+        margin: 3rem 8rem;
+    }
+
+    #destinationpage>div {
+    flex-direction: row;
+    }
+
+    #destinationpage>div>div {
+        align-items: flex-start;
+        gap: 3rem;
+
+    }
+
+    #destinationpage>div * {
+        text-align: start;
+    }
+
+    #destinationpage #planet-details {
+        flex-direction: row;
+        gap: 4rem;
+    }
+}
+
+
+
+
+
+/* 5.  Crew page styles */
+
+#crewpage {
+    min-height: calc(100vh - 96px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px;
+    gap: 2em;
+}
+
+#crewpage h5 span {
+    color: gray;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+#crewpage-img-div {
+    border-bottom: 1px solid #3b3b4b;
+    display: flex;
+    justify-content: center;
+}
+
+#crewpage-img-div img{
+    max-height: 40vh;
+}
+
+#crewpage>div {
+    display: flex;
+    align-items: center;
+}
+
+#crewpage-btn-div {
+    flex-direction: row;
+    gap: 1.4em;
+}
+
+#crewpage-btn-div * {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+}
+
+#crewpage-btn-div *:hover {
+    cursor: pointer;
+}
+
+#crewpage-bio-div {
+    flex-direction: column;
+    max-width: 40rem;
+    text-align: center;
+    gap: 1em;
+}
+
+#crewpage-bio-div h4 {
+    color:rgba(255, 255, 255, 0.5);
+    transform: scale(0.75);
+}
+
+@media (min-width: 700px) {
+    #crewpage h5 {
+        align-self: flex-start;
+    }
+}
+
+@media (min-width: 1300px) {
+    #crewpage h5 {
+        margin: 3rem 8rem;
+    }
 }

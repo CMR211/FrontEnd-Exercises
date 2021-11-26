@@ -16,6 +16,9 @@
       "title": ["Pick your destination", "Wybierz cel swojej podróży"],
       "distance": ["Avg. distance", "Śr. odległość"],
       "traveltime": ["Est. travel time", "Przewidywana dł. lotu"]
+    },
+    "crewpage": {
+      "title": ["Meet your crew", "Poznaj swoją załogę"]
     }
   },
   "destinations": [

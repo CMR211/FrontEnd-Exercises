@@ -41,7 +41,7 @@ function App() {
   const [lang, setLang] = React.useState(0);
   
   // Current subpage state
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(2);
 
   // Global state of window size to determine various comonents visibility
   const windowWidth = useWindowDimensions();
@@ -66,6 +66,7 @@ function App() {
         setCurrentPage={setCurrentPage}/>
       {currentPage === 0 ? <FrontPage language={lang} windowWidth={windowWidth} /> : null}
       {currentPage === 1 ? <DestinationPage language={lang} windowWidth={windowWidth} /> : null}
+      {currentPage === 2 ? <CrewPage language={lang} windowWidth={windowWidth} /> : null}
     </div>
   )
 }
@@ -99,22 +100,22 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
           <div id="touch-space" onClick={toggleActive}>
             {/* empty space */}
           </div>
-          <div onClick={() => goToPage(0)}>
+          <div onClick={() => {goToPage(0); setActive(false)}}>
             <p className="navtext">00</p>
             <p style={{color: (currentPage === 0) ? "gray" : "white"}}
               className="navtext">{DATA.headings.navbar.home[language]}</p>
           </div>
-          <div onClick={() => goToPage(1)}>
+          <div onClick={() => {goToPage(1); setActive(false)}}>
             <p className="navtext">01</p>
             <p style={{color: (currentPage === 1) ? "gray" : "white"}}
               className="navtext">{DATA.headings.navbar.destination[language]}</p>
           </div>
-          <div onClick={() => goToPage(2)}>
+          <div onClick={() => {goToPage(2); setActive(false)}}>
             <p className="navtext">02</p>
             <p style={{color: (currentPage === 2) ? "gray" : "white"}}
               className="navtext">{DATA.headings.navbar.crew[language]}</p>
           </div>
-          <div onClick={() => goToPage(3)}>
+          <div onClick={() => {goToPage(3); setActive(false)}}>
             <p className="navtext">03</p>
             <p style={{color: (currentPage === 3) ? "gray" : "white"}}
               className="navtext">{DATA.headings.navbar.technology[language]}</p>
@@ -218,7 +219,6 @@ function DestinationPage ( {language} ) {
 
   const [currentPlanet, setCurrentPlanet] = React.useState(0);
 
-
   return (
     <div id="destinationpage">
       <h5>
@@ -227,20 +227,92 @@ function DestinationPage ( {language} ) {
       </h5>
       <div>
         <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0].toLowerCase()}.png`} />
-        <div id="planet-navbar">
-          <p onClick={() => setCurrentPlanet(0)} className="navtext">{DATA.destinations[0].name[language]}</p>
-          <p onClick={() => setCurrentPlanet(1)} className="navtext">{DATA.destinations[1].name[language]}</p>
-          <p onClick={() => setCurrentPlanet(2)} className="navtext">{DATA.destinations[2].name[language]}</p>
-          <p onClick={() => setCurrentPlanet(3)} className="navtext">{DATA.destinations[3].name[language]}</p>
+        <div>
+          <div id="planet-navbar">
+            <p 
+              onClick={() => setCurrentPlanet(0)} 
+              className="navtext"
+              style={{
+                borderBottom: (currentPlanet === 0) ? "2px solid white" : "var(--border-style)",
+                color: (currentPlanet === 0) ? "white" : "rgba(255, 255, 255, 0.6)"}}
+              >{DATA.destinations[0].name[language]}
+            </p>
+            <p 
+              onClick={() => setCurrentPlanet(1)} 
+              className="navtext"
+              style={{
+                borderBottom: (currentPlanet === 1) ? "2px solid white" : "var(--border-style)",
+                color: (currentPlanet === 1) ? "white" : "rgba(255, 255, 255, 0.6)"}}
+              >{DATA.destinations[1].name[language]}
+            </p>
+            <p 
+              onClick={() => setCurrentPlanet(2)} 
+              className="navtext"
+              style={{
+                borderBottom: (currentPlanet === 2) ? "2px solid white" : "var(--border-style)",
+                color: (currentPlanet === 2) ? "white" : "rgba(255, 255, 255, 0.6)"}}
+              >{DATA.destinations[2].name[language]}
+            </p>
+            <p 
+              onClick={() => setCurrentPlanet(3)} 
+              className="navtext"
+              style={{
+                borderBottom: (currentPlanet === 3) ? "2px solid white" : "var(--border-style)",
+                color: (currentPlanet === 3) ? "white" : "rgba(255, 255, 255, 0.6)"}}
+              >{DATA.destinations[3].name[language]}
+            </p>
+          </div>
+          <h2>{DATA.destinations[currentPlanet].name[language]}</h2>
+          <p className="bodytext">{DATA.destinations[currentPlanet].description[language]}</p>
+          <div className="border-bottom"></div>
+          <div id="planet-details">
+            <div>
+              <p className="navtext">{DATA.headings.destinationpage.distance[language]}</p>
+              <h4>{DATA.destinations[currentPlanet].distance[language]}</h4>
+            </div>
+            <div>
+              <p className="navtext">{DATA.headings.destinationpage.traveltime[language]}</p>
+              <h4>{DATA.destinations[currentPlanet].travel[language]}</h4>
+            </div>
+          </div>
         </div>
-        <h2>{DATA.destinations[currentPlanet].name[language]}</h2>
-        <p className="bodytext">{DATA.destinations[currentPlanet].description[language]}</p>
-        <div id="planet-details">
-          <p className="navtext">{DATA.headings.destinationpage.distance[language]}</p>
-          <h4>{DATA.destinations[currentPlanet].distance[language]}</h4>
-          <p className="navtext">{DATA.headings.destinationpage.traveltime[language]}</p>
-          <h4>{DATA.destinations[currentPlanet].travel[language]}</h4>
-        </div>
+      </div>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+function CrewPage ( {language} ) {
+
+  const [currentCrew, setCurrentCrew] = React.useState(0);
+
+  return(
+    <div id="crewpage">
+      <h5>
+        <span>02</span>
+        {DATA.headings.crewpage.title[language]}
+      </h5>
+      <div id="crewpage-img-div">
+        <img src={DATA.crew[currentCrew].images.png} />
+      </div>
+      <div id="crewpage-btn-div">
+        <button style={{background: (currentCrew === 0) ? "white" : "rgba(255,255,255,0.4"}} onClick={() => setCurrentCrew(0)} className="btn-circle"></button>
+        <button style={{background: (currentCrew === 1) ? "white" : "rgba(255,255,255,0.4"}} onClick={() => setCurrentCrew(1)} className="btn-circle"></button>
+        <button style={{background: (currentCrew === 2) ? "white" : "rgba(255,255,255,0.4"}} onClick={() => setCurrentCrew(2)} className="btn-circle"></button>
+        <button style={{background: (currentCrew === 3) ? "white" : "rgba(255,255,255,0.4"}} onClick={() => setCurrentCrew(3)} className="btn-circle"></button>
+      </div>
+      <div id="crewpage-bio-div">
+        <h4>{DATA.crew[currentCrew].role[language]}</h4>
+        <h3>{DATA.crew[currentCrew].name}</h3>
+        <p className="bodytext">{DATA.crew[currentCrew].bio[language]}</p>
       </div>
     </div>
   )
