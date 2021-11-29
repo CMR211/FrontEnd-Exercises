@@ -46,6 +46,7 @@ function App() {
   // Global state of window size to determine various comonents visibility
   const windowWidth = useWindowDimensions();
 
+  // Background image depending on image resolution and current page
   function getBackgroundImage () {
     const pages = ["home", "destination", "crew", "technology"];
     let page = pages[currentPage];
@@ -67,6 +68,7 @@ function App() {
       {currentPage === 0 ? <FrontPage language={lang} windowWidth={windowWidth} /> : null}
       {currentPage === 1 ? <DestinationPage language={lang} windowWidth={windowWidth} /> : null}
       {currentPage === 2 ? <CrewPage language={lang} windowWidth={windowWidth} /> : null}
+      {currentPage === 3 ? <TechnologyPage language={lang} windowWidth={windowWidth} /> : null}
     </div>
   )
 }
@@ -194,7 +196,7 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
 
 
 
-function FrontPage ( {language, windowWidth} ) {
+function FrontPage ( {language} ) {
   return (
     <main id="frontpage">
       <div>
@@ -326,20 +328,55 @@ function CrewPage ( {language} ) {
 
 
 
-function DesignPage() {
+function TechnologyPage ( {language, windowWidth} ) {
+
+  const [currentTech, setCurrentTech] = React.useState(0); 
+
   return (
-    <div>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <p class="subheading1">Subheading 1</p>
-      <p class="subheading2">Subheading 1</p>
-      <p class="navtext">Nav text</p>
-      <p class="bodytext">Body text</p>
+    <div id="technologypage">
+      <h5>
+        <span>03</span>
+        {DATA.headings.technologypage.title[language]}
+      </h5>
+      <div id="main">
+        {(windowWidth >= 1300) ? 
+          <img src={DATA.technology[currentTech].images.portrait} /> : 
+          <img src={DATA.technology[currentTech].images.landscape} /> }
+        <div id="nav">
+          <button className="tech-nav" onClick={() => setCurrentTech(0)}>1</button>
+          <button className="tech-nav" onClick={() => setCurrentTech(1)}>2</button>
+          <button className="tech-nav" onClick={() => setCurrentTech(2)}>3</button>
+        </div>
+        <h5>{DATA.headings.technologypage.terminology[language]}</h5>
+        <h3>{DATA.technology[currentTech].name[language]}</h3>
+        <p className="bodytext">{DATA.technology[currentTech].description[language]}</p>
+      </div>
     </div>
-  );
+  )
 }
+  
+  
+  
 
 
+
+
+
+
+// CSS Styles 
+
+// function DesignPage() {
+//   return (
+//     <div>
+//       <h1>Heading 1</h1>
+//       <h2>Heading 2</h2>
+//       <h3>Heading 3</h3>
+//       <h4>Heading 4</h4>
+//       <h5>Heading 5</h5>
+//       <p class="subheading1">Subheading 1</p>
+//       <p class="subheading2">Subheading 1</p>
+//       <p class="navtext">Nav text</p>
+//       <p class="bodytext">Body text</p>
+//     </div>
+//   );
+// }
