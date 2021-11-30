@@ -41,7 +41,7 @@ function App() {
   const [lang, setLang] = React.useState(0);
   
   // Current subpage state
-  const [currentPage, setCurrentPage] = React.useState(2);
+  const [currentPage, setCurrentPage] = React.useState(0);
 
   // Global state of window size to determine various comonents visibility
   const windowWidth = useWindowDimensions();
@@ -205,6 +205,10 @@ function FrontPage ( {language} ) {
         <p className="bodytext">{DATA.headings.frontpage.paragraph[language]}</p>
       </div>
       <button className="big-btn ripple" id="frontpage-btn">{DATA.headings.frontpage.button[language]}</button>
+      <footer>
+        <p className="bodytext">A challenge by <a href="https://www.frontendmentor.io/challenges">Frontend Mentor.io</a></p>
+        <p className="bodytext">Completed by <a href="https://www.cmr211.github.com">Bartosz Surma</a></p>
+      </footer>
     </main>
   );
 }
@@ -338,18 +342,20 @@ function TechnologyPage ( {language, windowWidth} ) {
         <span>03</span>
         {DATA.headings.technologypage.title[language]}
       </h5>
-      <div id="main">
+      <div id="tech-div">
         {(windowWidth >= 1300) ? 
           <img src={DATA.technology[currentTech].images.portrait} /> : 
           <img src={DATA.technology[currentTech].images.landscape} /> }
-        <div id="nav">
-          <button className="tech-nav" onClick={() => setCurrentTech(0)}>1</button>
-          <button className="tech-nav" onClick={() => setCurrentTech(1)}>2</button>
-          <button className="tech-nav" onClick={() => setCurrentTech(2)}>3</button>
+        <div id="tech-nav-div">
+          <button className="tech-nav-btn" onClick={() => setCurrentTech(0)}><h4>1</h4></button>
+          <button className="tech-nav-btn" onClick={() => setCurrentTech(1)}><h4>2</h4></button>
+          <button className="tech-nav-btn" onClick={() => setCurrentTech(2)}><h4>3</h4></button>
         </div>
-        <h5>{DATA.headings.technologypage.terminology[language]}</h5>
-        <h3>{DATA.technology[currentTech].name[language]}</h3>
-        <p className="bodytext">{DATA.technology[currentTech].description[language]}</p>
+        <div id="tech-text">
+          <h5>{DATA.headings.technologypage.terminology[language]}</h5>
+          <h3>{DATA.technology[currentTech].name[language]}</h3>
+          <p className="bodytext">{DATA.technology[currentTech].description[language]}</p>
+        </div>
       </div>
     </div>
   )
