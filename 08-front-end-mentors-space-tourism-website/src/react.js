@@ -65,7 +65,7 @@ function App() {
         windowWidth={windowWidth} 
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}/>
-      {currentPage === 0 ? <FrontPage language={lang} windowWidth={windowWidth} /> : null}
+      {currentPage === 0 ? <FrontPage language={lang} windowWidth={windowWidth} setCurrentPage={setCurrentPage}/> : null}
       {currentPage === 1 ? <DestinationPage language={lang} windowWidth={windowWidth} /> : null}
       {currentPage === 2 ? <CrewPage language={lang} windowWidth={windowWidth} /> : null}
       {currentPage === 3 ? <TechnologyPage language={lang} windowWidth={windowWidth} /> : null}
@@ -95,6 +95,17 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
   function goToPage(pagenumber) { setCurrentPage(pagenumber) }
   
   function MobileNavbar () {
+
+    function MobileNavbarElement ( {pageTitle, pageNumber} ) {
+      return (
+        <div onClick={() => {goToPage(pageNumber); setActive(false)}}>
+          <p className="navtext">{`0${pageNumber}`}</p>
+          <p style={{color: (currentPage === pageNumber) ? "gray" : "white"}}
+            className="navtext">{DATA.headings.navbar[pageTitle][language]}</p>
+        </div>
+      )
+    }
+    
     return (
         <div 
         id="mobile-navbar"
@@ -102,26 +113,10 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
           <div id="touch-space" onClick={toggleActive}>
             {/* empty space */}
           </div>
-          <div onClick={() => {goToPage(0); setActive(false)}}>
-            <p className="navtext">00</p>
-            <p style={{color: (currentPage === 0) ? "gray" : "white"}}
-              className="navtext">{DATA.headings.navbar.home[language]}</p>
-          </div>
-          <div onClick={() => {goToPage(1); setActive(false)}}>
-            <p className="navtext">01</p>
-            <p style={{color: (currentPage === 1) ? "gray" : "white"}}
-              className="navtext">{DATA.headings.navbar.destination[language]}</p>
-          </div>
-          <div onClick={() => {goToPage(2); setActive(false)}}>
-            <p className="navtext">02</p>
-            <p style={{color: (currentPage === 2) ? "gray" : "white"}}
-              className="navtext">{DATA.headings.navbar.crew[language]}</p>
-          </div>
-          <div onClick={() => {goToPage(3); setActive(false)}}>
-            <p className="navtext">03</p>
-            <p style={{color: (currentPage === 3) ? "gray" : "white"}}
-              className="navtext">{DATA.headings.navbar.technology[language]}</p>
-          </div>
+            <MobileNavbarElement pageTitle="home" pageNumber={0} />
+            <MobileNavbarElement pageTitle="destination" pageNumber={1} />
+            <MobileNavbarElement pageTitle="crew" pageNumber={2} />
+            <MobileNavbarElement pageTitle="technology" pageNumber={3} />
         </div>
     )
   }
@@ -196,7 +191,7 @@ function Navbar ( {setLang, language, setCurrentPage, currentPage} ) {
 
 
 
-function FrontPage ( {language} ) {
+function FrontPage ( {language, setCurrentPage} ) {
   return (
     <main id="frontpage">
       <div>
@@ -204,11 +199,10 @@ function FrontPage ( {language} ) {
         <h1>{DATA.headings.frontpage.title[language]}</h1>
         <p className="bodytext">{DATA.headings.frontpage.paragraph[language]}</p>
       </div>
-      <button className="big-btn ripple" id="frontpage-btn">{DATA.headings.frontpage.button[language]}</button>
-      <footer>
-        <p className="bodytext">A challenge by <a href="https://www.frontendmentor.io/challenges">Frontend Mentor.io</a></p>
-        <p className="bodytext">Completed by <a href="https://www.cmr211.github.com">Bartosz Surma</a></p>
-      </footer>
+      <button 
+      className="big-btn ripple" 
+      id="frontpage-btn" 
+      onClick={() => setCurrentPage(2)}>{DATA.headings.frontpage.button[language]}</button>
     </main>
   );
 }
@@ -336,6 +330,17 @@ function TechnologyPage ( {language, windowWidth} ) {
 
   const [currentTech, setCurrentTech] = React.useState(0); 
 
+  function TechNavButton ( {tech} ) {
+    return (
+      <button 
+        style={{backgroundColor: (currentTech === tech) ? "rgba(255, 255, 255, 1" : "none"}} 
+        className="tech-nav-btn" 
+        onClick={() => setCurrentTech(tech)}>
+        <h4 style={{color: (currentTech === tech) ? "black" : "white"}}>{tech + 1}</h4>
+      </button>
+    )
+  }
+
   return (
     <div id="technologypage">
       <h5>
@@ -347,9 +352,9 @@ function TechnologyPage ( {language, windowWidth} ) {
           <img src={DATA.technology[currentTech].images.portrait} /> : 
           <img src={DATA.technology[currentTech].images.landscape} /> }
         <div id="tech-nav-div">
-          <button className="tech-nav-btn" onClick={() => setCurrentTech(0)}><h4>1</h4></button>
-          <button className="tech-nav-btn" onClick={() => setCurrentTech(1)}><h4>2</h4></button>
-          <button className="tech-nav-btn" onClick={() => setCurrentTech(2)}><h4>3</h4></button>
+          <TechNavButton tech={0} />
+          <TechNavButton tech={1} />
+          <TechNavButton tech={2} />
         </div>
         <div id="tech-text">
           <h5>{DATA.headings.technologypage.terminology[language]}</h5>
