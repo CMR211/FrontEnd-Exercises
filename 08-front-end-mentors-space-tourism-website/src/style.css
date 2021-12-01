@@ -2,8 +2,33 @@
 
 /* TABLE OF CONTENTS */
 
+/* 1.  Global styles */
+    /* 1.1.  Global variables */
+    /* 1.2.  Headings and text-styles */
+    /* 1.3.  Set backgrounds for different resolutions */
+    /* 1.4.  Set react-app to fully stretch */
+    /* 1.5.  Ripple buttons */
 
-/* TODO */
+/* 2.  Navbar */
+    /* 2.1.  General navbar styles */
+    /* 3.2.  Mobile navbar styles */
+    /* 3.3.  Fullscreen navbar styles */
+
+/* 3.  Frontpage page styles */
+
+/* 4.  Destination page styles */
+
+/* 5.  Crew page styles */
+
+/* 6.  Technology Page  */
+
+/* 7.  Footer */
+
+
+
+
+
+
 
 
 
@@ -34,6 +59,14 @@
 img {
     display: block;
 }
+
+
+
+
+
+
+
+
 
 /* 1.2.  Headings and text-styles */
 
@@ -98,8 +131,24 @@ h5 {
     letter-spacing: 0.056em;
 }
 
+
+
+
+
+
+
+
+
 /* 1.3.  Set backgrounds for different resolutions */
 /* Done in react.js, it was faster that way */
+
+
+
+
+
+
+
+
 
 /* 1.4.  Set react-app to fully stretch */
 
@@ -118,6 +167,14 @@ body {
     min-height: 100vh;
 }
 
+
+
+
+
+
+
+
+
 /* 1.5.  Ripple buttons */
 
 .ripple {
@@ -127,6 +184,7 @@ body {
 
 .ripple:hover {
     background: white radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+    cursor: pointer;
 }
 
 .ripple:active {
@@ -134,6 +192,10 @@ body {
     background-size: 100%;
     transition: background 0s;
 }
+
+
+
+
 
 
 
@@ -183,6 +245,14 @@ body {
     z-index: 2;
 }
 
+
+
+
+
+
+
+
+
 /* 3.2.  Mobile navbar styles */
 
 #mobile-navbar {
@@ -231,6 +301,14 @@ body {
     width: 40vw;
 }
 
+
+
+
+
+
+
+
+
 /* 3.3.  Fullscreen navbar styles */
 
 #fullscreen-navbar {
@@ -250,7 +328,8 @@ body {
     border-bottom: 4px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-/* #mobile-navbar */
+
+
 
 
 
@@ -297,15 +376,19 @@ body {
     letter-spacing: 0.054em;
     text-transform: uppercase;
     font-size: clamp(20px, 5vw, 32px);
-    transition: all 800ms ease-in-out;
+    transition: box-shadow 800ms ease-in-out;
 }
 
-@media (hover: hover) {
+@media (min-width: 1300px) {
     .big-btn:hover {
-        box-shadow: 0 0 0 3.75em rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 0 1em rgba(255, 255, 255, 0.1);
         cursor: pointer;
     }
 }
+
+
+
+
 
 
 
@@ -427,6 +510,10 @@ body {
 
 
 
+
+
+
+
 /* 5.  Crew page styles */
 
 #crewpage {
@@ -522,6 +609,13 @@ body {
 }
 
 
+
+
+
+
+
+
+
 /* 6. Technology Page  */
 
 #technologypage {
@@ -557,17 +651,17 @@ body {
 }
 
 #tech-nav-div button {
-    --bg-color: transparent;
+    --theme-color: rgba(255, 255, 255, 0.2);
     background: var(--bg-color);
     width: 5em;
     height: 5em;
     border-radius: 50%;
-    border: 1px solid rgb(75, 75, 75);
+    border: 1px solid var(--theme-color);
 }
 
 #tech-nav-div button:hover {
-    --bg-color: gray;
-    background: var(--bg-color);
+    background-color: var(--theme-color) !important;
+    cursor: pointer;
 }
 
 #tech-text {
@@ -621,14 +715,27 @@ body {
 }
 
 
+
+
+
+
+
+
+
 /* 7.  Footer */
 
 footer {
     transform: scale(0.66);
     opacity: 0.66;
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 0;
+    right: -1rem;
+    text-align: end;
+    margin: 0;
+}
+
+footer * {
+    margin: 0;
 }
 
 footer a {
