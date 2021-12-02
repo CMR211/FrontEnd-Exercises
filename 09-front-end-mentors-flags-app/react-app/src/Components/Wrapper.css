@@ -1,0 +1,30 @@
+main {
+  background: var(--colorbackground);
+  min-height: 20rem;
+  max-width: 50rem;
+  margin: 3rem auto;
+  color: var(--colortext);
+}
+
+#searchdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.searchbar {
+  font-size: 1.05rem;
+  color: var(--colortext);
+  background: var(--colorelements);
+  border: none;
+  border-radius: 3px;
+  padding: 1rem;
+  box-shadow: var(--boxshadow);
+}
+
+#countrysearch {
+  width: 25rem;
+  padding-left: 3rem;
+}
+

@@ -1,0 +1,15 @@
+.country {
+  box-shadow: var(--boxshadow);
+  background: var(--colorelements);
+  border-radius: 6px;
+}
+
+.country>div {
+  padding: 1rem;
+}
+
+.country span {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+}

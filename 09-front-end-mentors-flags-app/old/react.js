@@ -87,18 +87,28 @@ function MainWrapper () {
       <div className="countries">
         {" "}
         {/* Countries */}
-        <div className="country-card">
-          <div className="country-flag"></div>
-          <div className="country-info">
-            <h2>Country name</h2>
-            <p>Country population</p>
-            <p>Country region</p>
-            <p>Country capital</p>
-          </div>
-        </div>
+        
       </div>
     </main>
   );
+}
+
+
+
+
+function CountryCard ( {countryID, isDataLoaded} ) {
+
+  return (
+    <div className="country-card">
+      <div className="country-flag"></div>
+      <div className="country-info">
+        <h2>{countries[countryID]["name"]["common"]}</h2>
+        <p>Country population</p>
+        <p>Country region</p>
+        <p>Country capital</p>
+      </div>
+    </div>
+  )
 }
 
 
