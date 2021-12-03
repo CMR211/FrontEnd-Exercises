@@ -4,19 +4,20 @@ import styles from "./CountriesWrapper.css"
 
 export default CountriesWrapper;
 
-function CountriesWrapper ( {filteredCountriesList} ) {
+function randomCountryID () {
+  return Math.floor(Math.random()*250)
+}
+
+function CountriesWrapper ( {countries} ) {
   return (
     <div id="countries-wrapper">
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
-      <Country />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
+      <Country countries={countries} countryID={randomCountryID()} />
     </div>
   )
 }

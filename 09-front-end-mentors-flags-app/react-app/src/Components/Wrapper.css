@@ -1,7 +1,7 @@
 main {
   background: var(--colorbackground);
   min-height: 20rem;
-  max-width: 50rem;
+  max-width: var(--maxwidth);
   margin: 3rem auto;
   color: var(--colortext);
 }

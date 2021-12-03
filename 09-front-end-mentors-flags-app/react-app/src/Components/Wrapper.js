@@ -6,7 +6,23 @@ export default Wrapper;
 
 function Wrapper ( {colors, colorMode} ) {
 
+  const [isDataLoaded, setIsDataLoaded] = React.useState(false);
+  const [fetchedCountriesList, setFetchedCountriesList] = React.useState();
   const [filteredCountriesList, setFilteredCountriesList] = React.useState();
+
+  React.useEffect(() => {
+    const API_URL = `https://restcountries.com/v2/all`;
+    async function fetchAPI () {
+      setIsDataLoaded(false);
+      const response = await fetch(API_URL);
+      const result = await response.json();
+      setFetchedCountriesList(result);
+      setIsDataLoaded(true);
+    };
+    fetchAPI();
+  }, [] );
+
+  
 
   return (
     <main style={colors[colorMode]}>
@@ -30,10 +46,16 @@ function Wrapper ( {colors, colorMode} ) {
           </datalist>
       </div>
 
-      <CountriesWrapper 
-        colors={colors} 
-        colorMode={colorMode} 
-        countries={filteredCountriesList} />
+      {isDataLoaded ? 
+        (
+          <CountriesWrapper 
+            colors={colors} 
+            colorMode={colorMode} 
+            countries={fetchedCountriesList} /> ) :
+        (
+            <div>Loading....</div>
+        )
+      }
 
     </main>
   )
