@@ -2,8 +2,9 @@ main {
   background: var(--colorbackground);
   min-height: 20rem;
   max-width: var(--maxwidth);
-  margin: 3rem auto;
+  margin: 3rem auto 0 auto;
   color: var(--colortext);
+  padding: 0 2rem 3rem 2rem;
 }
 
 #searchdiv {
@@ -26,5 +27,8 @@ main {
 #countrysearch {
   width: 25rem;
   padding-left: 3rem;
+  background: 
+    url("../Icons/search_black_24dp.svg") no-repeat scroll 1rem 1rem,
+    var(--colorelements);
 }
 

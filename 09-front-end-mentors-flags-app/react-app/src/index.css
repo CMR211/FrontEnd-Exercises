@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 
-  --maxwidth: 60rem;
+  font-family: "Nunito Sans", sans-serif;
+
+  --maxwidth: 70rem;
 }
 
 html,

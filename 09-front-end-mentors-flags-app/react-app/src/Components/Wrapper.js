@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Wrapper.css";
 import CountriesWrapper from "./CoutriesWrapper"
+import RegionsDropdown from "./RegionsDropdown";
 
 export default Wrapper;
 
@@ -17,12 +18,26 @@ function Wrapper ( {colors, colorMode} ) {
       const response = await fetch(API_URL);
       const result = await response.json();
       setFetchedCountriesList(result);
+      setFilteredCountriesList(result);
       setIsDataLoaded(true);
     };
     fetchAPI();
   }, [] );
 
-  
+  function filterByRegion (region) {
+    if (isDataLoaded) {
+      const res = fetchedCountriesList.filter(
+        item => item["region"] === region
+      )
+      setFilteredCountriesList(res);
+    }
+  }
+
+  function clearFilter () {
+    if (isDataLoaded) {
+      setFilteredCountriesList(fetchedCountriesList);
+    }
+  }
 
   return (
     <main style={colors[colorMode]}>
@@ -32,18 +47,7 @@ function Wrapper ( {colors, colorMode} ) {
           className="searchbar"
           id="countrysearch" 
           placeholder="Search for a country..." />
-        <input 
-          list="regions" 
-          className="searchbar" 
-          id="regionsearch"
-          placeholder="Filter by Region" />
-          <datalist id="regions">
-            <option value="Africa" />
-            <option value="America" />
-            <option value="Asia" />
-            <option value="Europe" />
-            <option value="Oceania" />
-          </datalist>
+        <RegionsDropdown filterByRegion={filterByRegion} clearFilter={clearFilter}/>
       </div>
 
       {isDataLoaded ? 
@@ -51,9 +55,9 @@ function Wrapper ( {colors, colorMode} ) {
           <CountriesWrapper 
             colors={colors} 
             colorMode={colorMode} 
-            countries={fetchedCountriesList} /> ) :
+            countries={filteredCountriesList} /> ) :
         (
-            <div>Loading....</div>
+            <div style={{display: "grid", placeItems: "center"}}>Loading....</div>
         )
       }
 
