@@ -1,12 +1,12 @@
 # Project Euler Problems
 
-## 1. Multiples od 3 or 5
+## 1. Multiples of 3 or 5
 
 If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 
-**Solution: 233168**
+**[Solution: 233168](problem-1.js)**
 
 ## 2. Even Fibonacci numbers
 
@@ -31,3 +31,11 @@ What is the largest prime factor of the number 600851475143 ?
 A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
 
 Find the largest palindrome made from the product of two 3-digit numbers.
+
+**Solution: 906609**
+
+## 5. Smallest multiple
+
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
