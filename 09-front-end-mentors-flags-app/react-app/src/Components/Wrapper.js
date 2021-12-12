@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./Wrapper.css";
-import CountriesWrapper from "./CoutriesWrapper"
+import CountriesWrapper from "./CountriesWrapper"
 import RegionsDropdown from "./RegionsDropdown";
+import Searchbar from "./Searchbar";
 
 export default Wrapper;
 
@@ -39,14 +40,20 @@ function Wrapper ( {colors, colorMode} ) {
     }
   }
 
+  function filterByName (e) {
+    if (isDataLoaded) {
+      const res = fetchedCountriesList.filter(
+        item => item["name"].toLowerCase().includes(e.target.value.toLowerCase())
+      )
+      setFilteredCountriesList(res)
+    }
+  }
+
   return (
     <main style={colors[colorMode]}>
 
       <div id="searchdiv">
-        <input 
-          className="searchbar"
-          id="countrysearch" 
-          placeholder="Search for a country..." />
+        <Searchbar filterByName={filterByName}/>
         <RegionsDropdown filterByRegion={filterByRegion} clearFilter={clearFilter}/>
       </div>
 

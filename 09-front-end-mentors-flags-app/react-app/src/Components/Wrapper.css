@@ -1,6 +1,5 @@
 main {
   background: var(--colorbackground);
-  min-height: 20rem;
   max-width: var(--maxwidth);
   margin: 3rem auto 0 auto;
   color: var(--colortext);
@@ -12,23 +11,15 @@ main {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 3rem;
+  gap: 3rem;
 }
 
-.searchbar {
-  font-size: 1.05rem;
-  color: var(--colortext);
-  background: var(--colorelements);
-  border: none;
-  border-radius: 3px;
-  padding: 1rem;
-  box-shadow: var(--boxshadow);
+@media (max-width: 610px) {
+  #searchdiv {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-#countrysearch {
-  width: 25rem;
-  padding-left: 3rem;
-  background: 
-    url("../Icons/search_black_24dp.svg") no-repeat scroll 1rem 1rem,
-    var(--colorelements);
-}
+
 

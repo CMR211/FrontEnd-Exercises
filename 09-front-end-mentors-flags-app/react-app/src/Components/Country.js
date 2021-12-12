@@ -3,7 +3,7 @@ import styles from "./Country.css"
 
 export default Country;
 
-function Country ( {countries, countryID} ) {
+function Country ( {countries, countryID, showModal} ) {
 
   const countryData = {};
   const propertiesArray = ["name", "population", "area", "region", "capital"]; 
@@ -27,11 +27,12 @@ function Country ( {countries, countryID} ) {
     countryData[el] = result;
   }
 
-
   return (
-    <div className="country">
-      <img alt="country flag" src={countries[countryID]["flags"]["svg"]} />
-      <div>
+    <div className="country" onClick={() => showModal(countryID)}>
+      <img 
+      alt="country flag" 
+      src={countries[countryID]["flags"]["svg"]} />
+      <div className="country-info">
         <h2>{countryData.name[0]}</h2>
         <span>{countryData.name[1]}</span>
         <p><span>Population: </span>{countryData.population}</p>

@@ -1,0 +1,56 @@
+.modal-main {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: var(--colorbackground);
+  box-shadow: var(--boxshadow);
+  border-radius: 1rem;
+  padding: 2rem;
+  z-index: 12;
+  width: 70vw;
+  height: 50vh;
+}
+
+.modal-content>button {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: none;
+  outline: none;
+  background: none;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  transform: scale(1);
+  transition: transform 100ms ease-in-out;
+  --buttoniconcolor: gray;
+  cursor: pointer;
+  color: var(--colortext);
+}
+
+.modal-content>button>svg {
+  width: 75%;
+  height: 75%;
+  color: var(--buttoniconcolor);
+}
+
+.modal-content>button:hover {
+  transform: scale(1.1);
+  --buttoniconcolor: current-color;
+}
+
+.clicktohide {
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}

@@ -15,3 +15,9 @@
   background: var(--colorbackground);
   cursor: pointer;
 }
+
+.dropdown-menu button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
