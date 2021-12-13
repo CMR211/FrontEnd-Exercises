@@ -11,15 +11,15 @@ function CountriesWrapper ( {countries} ) {
     <Country 
       countries={countries} 
       countryID={countries.indexOf(item)} 
-      showModal={() => showModal()}
+      showModal={showModal}
     />
   )
 
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [modalCountryID, setModalCountryID] = React.useState();
 
-  function showModal (countryID) {
-    setModalCountryID(countryID);
+  function showModal (id) {
+    setModalCountryID(id);
     setIsModalVisible(true);
   }
 
@@ -32,7 +32,8 @@ function CountriesWrapper ( {countries} ) {
       {countriesCards}
       {isModalVisible && 
         <Modal 
-          countryID={modalCountryID} 
+          modalCountryID={modalCountryID} 
+          setModalCountryID={setModalCountryID}
           hideModal={hideModal} 
           countries={countries}
         /> 
