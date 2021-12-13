@@ -15,7 +15,6 @@ export default function Modal ( {modalCountryID, setModalCountryID, hideModal, c
     if (countries[modalCountryID]["borders"] === undefined) return null
     return countries[modalCountryID]["borders"].map(element => {
       const borderCountryIndex = countries.findIndex(item => item["alpha3Code"] === element)
-      console.log(borderCountryIndex)
       return (
         <button onClick={() => setModalCountryID(borderCountryIndex)}>
           {getCountryData(borderCountryIndex, "name")}
@@ -23,13 +22,14 @@ export default function Modal ( {modalCountryID, setModalCountryID, hideModal, c
       )
     })
   }
-const countryBorders = getCountryBorders()
+
+  const countryBorders = getCountryBorders()
 
   return (
     <div className="modal-main">
       <div className="modal-content">
         <button onClick={() => hideModal()}>{iconClose}</button>
-        <img src={countries[modalCountryID]["flags"]["svg"]} />
+        <img alt="country flag" src={countries[modalCountryID]["flags"]["svg"]} />
         <div className="modal-header">
           <h1>{countries[modalCountryID]["name"]}</h1>
           <h2 className="modal-domain">{countries[modalCountryID]["topLevelDomain"]}</h2>

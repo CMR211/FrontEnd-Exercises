@@ -80,6 +80,11 @@
   font-weight: bold;
 }
 
+.modal-content h3 {
+  border-bottom: 2px solid var(--colorelements);
+  margin-bottom: 0.5rem;
+}
+
 .modal-borders {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
@@ -91,12 +96,13 @@
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  background: rgb(240,240,240);
+  background: var(--colorelements);
+  color: var(--colortext);
   transition: 300ms;
 }
 
 .modal-borders>button:hover {
-  background: var(--colorelements);
+  background: var(--colorbackground);
   box-shadow: var(--boxshadow);
 }
 

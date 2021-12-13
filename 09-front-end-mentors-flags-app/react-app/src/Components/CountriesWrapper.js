@@ -5,7 +5,7 @@ import styles from "./CountriesWrapper.css"
 
 export default CountriesWrapper;
 
-function CountriesWrapper ( {countries} ) {
+function CountriesWrapper ( {countries, allcountries} ) {
 
   const countriesCards = countries.map( item => 
     <Country 
@@ -35,7 +35,7 @@ function CountriesWrapper ( {countries} ) {
           modalCountryID={modalCountryID} 
           setModalCountryID={setModalCountryID}
           hideModal={hideModal} 
-          countries={countries}
+          countries={allcountries}
         /> 
       }
     </div>

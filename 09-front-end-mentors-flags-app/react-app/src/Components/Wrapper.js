@@ -62,7 +62,8 @@ function Wrapper ( {colors, colorMode} ) {
           <CountriesWrapper 
             colors={colors} 
             colorMode={colorMode} 
-            countries={filteredCountriesList} /> 
+            countries={filteredCountriesList} 
+            allcountries={fetchedCountriesList}/> 
         ) : (
             <div style={{display: "grid", placeItems: "center"}}>Loading....</div>
         )
