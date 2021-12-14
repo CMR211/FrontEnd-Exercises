@@ -321,6 +321,7 @@ body {
 
 #fullscreen-navbar div {
     height: calc(100% - 4px);
+    transition: 300ms;
 }
 
 #fullscreen-navbar div:hover {

@@ -202,7 +202,7 @@ function FrontPage ( {language, setCurrentPage} ) {
       <button 
       className="big-btn ripple" 
       id="frontpage-btn" 
-      onClick={() => setCurrentPage(2)}>{DATA.headings.frontpage.button[language]}</button>
+      onClick={() => setCurrentPage(1)}>{DATA.headings.frontpage.button[language]}</button>
     </main>
   );
 }
@@ -219,13 +219,40 @@ function DestinationPage ( {language} ) {
 
   const [currentPlanet, setCurrentPlanet] = React.useState(0);
 
+  const [touchPos, setTouchPos] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDown = event.touches[0].clientX
+    setTouchPos(touchDown)
+  }
+
+  function handleTouchMove (event) {
+    const touchDown = touchPos
+    if (touchDown === null) return
+    const currentTouch = event.touches[0].clientX
+    const diff = touchDown - currentTouch
+    if (diff > 5) next()
+    if (diff < -5) prev()
+    setTouchPos(null)
+  }
+
+  function next() {
+    if (currentPlanet < 3 ) setCurrentPlanet(currentPlanet + 1)
+  }
+
+  function prev() {
+    if (currentPlanet > 0 ) setCurrentPlanet(currentPlanet - 1)
+  }
+
   return (
     <div id="destinationpage">
       <h5>
         <span>01</span>
         {DATA.headings.destinationpage.title[language]}
       </h5>
-      <div>
+      <div 
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}>
         <img src={`./assets/destination/image-${DATA.destinations[currentPlanet].name[0].toLowerCase()}.png`} />
         <div>
           <div id="planet-navbar">
@@ -294,8 +321,35 @@ function CrewPage ( {language} ) {
 
   const [currentCrew, setCurrentCrew] = React.useState(0);
 
+  const [touchPos, setTouchPos] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDown = event.touches[0].clientX
+    setTouchPos(touchDown)
+  }
+
+  function handleTouchMove (event) {
+    const touchDown = touchPos
+    if (touchDown === null) return
+    const currentTouch = event.touches[0].clientX
+    const diff = touchDown - currentTouch
+    if (diff > 5) next()
+    if (diff < -5) prev()
+    setTouchPos(null)
+  }
+
+  function next() {
+    if (currentCrew < 3 ) setCurrentCrew(currentCrew + 1)
+  }
+
+  function prev() {
+    if (currentCrew > 0 ) setCurrentCrew(currentCrew - 1)
+  }
+
   return(
-    <div id="crewpage">
+    <div id="crewpage" 
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}>
       <h5>
         <span>02</span>
         {DATA.headings.crewpage.title[language]}
@@ -330,6 +384,31 @@ function TechnologyPage ( {language, windowWidth} ) {
 
   const [currentTech, setCurrentTech] = React.useState(0); 
 
+  const [touchPos, setTouchPos] = React.useState(null)
+
+  function handleTouchStart (event) {
+    const touchDown = event.touches[0].clientX
+    setTouchPos(touchDown)
+  }
+
+  function handleTouchMove (event) {
+    const touchDown = touchPos
+    if (touchDown === null) return
+    const currentTouch = event.touches[0].clientX
+    const diff = touchDown - currentTouch
+    if (diff > 5) next()
+    if (diff < -5) prev()
+    setTouchPos(null)
+  }
+
+  function next() {
+    if (currentTech < 2 ) setCurrentTech(currentTech + 1)
+  }
+
+  function prev() {
+    if (currentTech > 0 ) setCurrentTech(currentTech - 1)
+  }
+
   function TechNavButton ( {tech} ) {
     return (
       <button 
@@ -342,7 +421,9 @@ function TechnologyPage ( {language, windowWidth} ) {
   }
 
   return (
-    <div id="technologypage">
+    <div id="technologypage"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}>
       <h5>
         <span>03</span>
         {DATA.headings.technologypage.title[language]}
